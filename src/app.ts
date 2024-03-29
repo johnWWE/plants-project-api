@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
-import { Request, Response } from 'express';
+
 import app from './middleware/middleware';
+import router from './routes/routes';
+
 import { connectToMongoDB } from './config/db';
 
 dotenv.config();
@@ -12,9 +14,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://doesnt.exist:27017/tes
 connectToMongoDB(MONGODB_URI);
 
 // Routes
-app.get('/', (req: Request, res: Response) => {
-  res.send('Welcome to plants project api');
-});
+app.use(`/`, router);
 
 app.listen(PORT, () => {
   console.log(`Server runing in: http://localhost:${PORT}`);

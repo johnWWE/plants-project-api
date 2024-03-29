@@ -1,12 +1,6 @@
-/* eslint-disable no-unused-vars */
-
 import mongoose from 'mongoose';
 
-interface ConnectToMongoDBFunction {
-  (uri: string): Promise<void>;
-}
-
-export const connectToMongoDB: ConnectToMongoDBFunction = async (uri) => {
+export const connectToMongoDB = async (uri: string): Promise<void> => {
   try {
     await mongoose.connect(uri);
     console.log('Successful connection to MongoDB');

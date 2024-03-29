@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+
 import morganConfig from '../config/morgan';
 
 const app: Application = express();
