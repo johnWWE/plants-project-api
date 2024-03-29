@@ -1,6 +1,20 @@
 {
+  "name": "plants-project-api",
+  "version": "1.0.0",
+  "description": "Node.js, Express y TypeScript",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "nodemon",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "qwik",
+  "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   },
   "dependencies": {
