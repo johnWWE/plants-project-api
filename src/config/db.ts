@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-export const connectToMongoDB = async (uri: string): Promise<void> => {
+import { ConnectToMongoDB } from '../ts/types';
+
+export const connectToMongoDB: ConnectToMongoDB = async (uri) => {
   try {
     await mongoose.connect(uri);
     console.log('Successful connection to MongoDB');

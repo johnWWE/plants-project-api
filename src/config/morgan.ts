@@ -1,6 +1,8 @@
 import morgan from 'morgan';
 
-const morganConfig = morgan((tokens, req, res) => {
+import { MorganConfigFunction } from '../ts/types';
+
+const morganConfig: MorganConfigFunction = (tokens, req, res) => {
   return [
     tokens.method(req, res),
     tokens.url(req, res),
@@ -14,6 +16,6 @@ const morganConfig = morgan((tokens, req, res) => {
     '-',
     tokens['user-agent'](req, res),
   ].join(' ');
-});
+};
 
-export default morganConfig;
+export default morgan(morganConfig);
