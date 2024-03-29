@@ -1,30 +1,26 @@
-import { Request, Response } from 'express';
-
 import User from '../models/users';
 
-import {UserDocument } from '../ts/interfaces'
-import {GetAllUsersFunction} from '../ts/types'
+import { UserDocument, UserRole, QueryFilters } from '../ts/interfaces';
+import { FnController } from '../ts/types';
 
-export const fn_get_all_users: GetAllUsersFunction = async (req, res) => {
+export const fn_get_all_users: FnController = async (req, res) => {
   try {
-    let query: any = {};
+    const query: QueryFilters = {};
 
     if (req.query.username) {
-      query.name = { $regex: new RegExp(req.query.username as string, 'i') };
+      query.username = { $regex: new RegExp(req.query.username as string, 'i') };
     }
 
     const users: UserDocument[] = await User.find(query);
 
     res.status(200).json({ users });
-  } catch (error: any) {
-    console.error('Error getting list of users: ', error);
+  } catch (error) {
+    console.error('Error getting list of users: ', (error as Error).message);
     res.status(500).json({ mensaje: 'Internal server error' });
   }
 };
 
-type GetUserByIdFunction = (req: Request, res: Response) => Promise<void>;
-
-export const fn_get_user_by_id: GetUserByIdFunction = async (req, res) => {
+export const fn_get_user_by_id: FnController = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -41,9 +37,39 @@ export const fn_get_user_by_id: GetUserByIdFunction = async (req, res) => {
     }
 
     res.status(200).json({ users });
-  } catch (error: any) {
-    console.error('Error getting user:', error);
+  } catch (error) {
+    console.error('Error getting user:', (error as Error).message);
     res.status(500).json({ mensaje: 'Internal server error' });
   }
 };
 
+export const create_user: FnController = async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    if (!username || !email || !password) {
+      res.status(400).json({ mensaje: 'Missing required fields' });
+      return;
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      res.status(400).json({ mensaje: 'Email already in use' });
+      return;
+    }
+
+    const newUser: UserDocument = new User({
+      username,
+      email,
+      password,
+      role: UserRole.None,
+    });
+
+    await newUser.save();
+
+    res.status(201).json({ mensaje: 'User created successfully', usuario: newUser });
+  } catch (error) {
+    console.error('Error creating user:', (error as Error).message);
+    res.status(500).json({ mensaje: 'Internal server error' });
+  }
+};

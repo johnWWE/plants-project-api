@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import {UserDocument, UserModel} from '../ts/interfaces'
+import { UserDocument, UserModel } from '../ts/interfaces';
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
@@ -12,4 +12,3 @@ const userSchema = new mongoose.Schema({
 const User: UserModel = mongoose.model<UserDocument, UserModel>('User', userSchema);
 
 export default User;
-
