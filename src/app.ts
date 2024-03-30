@@ -14,7 +14,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://doesnt.exist:27017/tes
 connectToMongoDB(MONGODB_URI);
 
 // Routes
-app.use(`/`, router);
+app.use('/', router);
 
 app.listen(PORT, () => {
   console.log(`Server runing in: http://localhost:${PORT}`);
