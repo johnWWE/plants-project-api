@@ -20,7 +20,6 @@ export const fn_get_all_users: FnController = async (req, res) => {
   }
 };
 
-
 export const fn_get_user_by_id: FnControllerResponse = async (req, res) => {
   const { id } = req.params;
 
@@ -44,7 +43,6 @@ export const fn_get_user_by_id: FnControllerResponse = async (req, res) => {
       success: true,
       data: user,
     });
-
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -54,11 +52,10 @@ export const fn_get_user_by_id: FnControllerResponse = async (req, res) => {
   }
 };
 
-
 export const create_user: FnControllerResponse = async (req, res) => {
   const { username, email, password } = req.body;
 
-  if (!username || !email || !password ) {
+  if (!username || !email || !password) {
     return res.status(400).json({
       success: false,
       message: 'Missing required fields',
@@ -81,21 +78,17 @@ export const create_user: FnControllerResponse = async (req, res) => {
     role: UserRole.None,
   });
 
-
   try {
     const savedUser = await newUser.save();
     return res.status(201).json({
       success: true,
       data: savedUser,
     });
-
   } catch (error) {
     return res.status(500).json({
       success: false,
       message: 'Failed to create user',
       error: (error as Error).message,
     });
-
   }
-
 };
