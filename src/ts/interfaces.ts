@@ -10,7 +10,6 @@ export interface IUser {
   email: string;
   password: string;
   role: UserRole;
-  role: UserRole;
 }
 
 export interface UserQuery {
