@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
-
-import { UserDocument, UserModel } from '../ts/interfaces';
+import { UserRole } from '../ts/interfaces';
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  role: { type: String, required: true, enum: ['none', 'basic', 'pro'] },
+  role: { type: String, enum: Object.values(UserRole), default: UserRole.NONE },
 });
 
-const User: UserModel = mongoose.model<UserDocument, UserModel>('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 export default User;

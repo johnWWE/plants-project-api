@@ -1,21 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { Document, Model } from 'mongoose';
-
 export enum UserRole {
-  None = 'none',
-  Basic = 'basic',
-  Pro = 'pro',
+  NONE = 'none',
+  BASIC = 'basic',
+  ADMIN = 'admin',
 }
 
-export interface UserDocument extends Document {
+export interface IUser {
   username: string;
   email: string;
   password: string;
   role: UserRole;
+  role: UserRole;
 }
 
-export interface UserModel extends Model<UserDocument> {}
-
-export interface QueryFilters {
-  username?: { $regex: RegExp };
+export interface UserQuery {
+  username?: { $regex: string; $options: string };
 }
