@@ -1,6 +1,8 @@
+import mongoose from 'mongoose';
 import User from '../models/user.model';
 import { IUser, UserQuery, UserRole } from '../ts/interfaces';
 import { FnControllers } from '../ts/types';
+import { BadRequestError, NotFoundError } from '../utils/customErrors';
 
 export const getUsers: FnControllers = async (req, res) => {
   try {
@@ -19,17 +21,21 @@ export const getUsers: FnControllers = async (req, res) => {
   }
 };
 
-export const getUserById: FnControllers = async (req, res) => {
+export const getUserById: FnControllers = async (req, res, next) => {
   const { id } = req.params;
 
   try {
+    if (!id) throw BadRequestError('User ID not provided');
+
+    if (!mongoose.Types.ObjectId.isValid(id)) throw NotFoundError('User ID is invalid');
+
     const user = await User.findById(id);
 
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) throw NotFoundError('User not found');
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ message: 'Error getting user: ', error: (error as Error).message });
+    next(error);
   }
 };
 
