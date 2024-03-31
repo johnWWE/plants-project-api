@@ -23,6 +23,16 @@ export const ConflictError = (message: string) => ({
   message: message,
 });
 
+export const UnprocessableEntityError = (message: string) => ({
+  statusCode: 422,
+  message: message,
+});
+
+export const TooManyRequestsError = (message: string) => ({
+  statusCode: 429,
+  message: message,
+});
+
 export const InternalServerError = (message: string) => ({
   statusCode: 500,
   message: message,
