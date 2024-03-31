@@ -2,22 +2,20 @@ import mongoose from 'mongoose';
 import User from '../models/user.model';
 import { IUser, UserQuery, UserRole } from '../ts/interfaces';
 import { FnControllers } from '../ts/types';
-import { BadRequestError, NotFoundError } from '../utils/customErrors';
+import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
 
-export const getUsers: FnControllers = async (req, res) => {
+export const getUsers: FnControllers = async (req, res, next) => {
   try {
     const query: UserQuery = {};
     const { username } = req.query;
 
-    if (username) {
-      query.username = { $regex: username.toString(), $options: 'i' };
-    }
+    if (username) query.username = { $regex: username.toString(), $options: 'i' };
 
     const users: IUser[] = await User.find(query);
 
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ message: 'Error getting users: ', error: (error as Error).message });
+    next(error as Error);
   }
 };
 
@@ -35,18 +33,20 @@ export const getUserById: FnControllers = async (req, res, next) => {
 
     res.status(200).json(user);
   } catch (error) {
-    next(error);
+    next(error as Error);
   }
 };
 
-export const createUser: FnControllers = async (req, res) => {
+export const createUser: FnControllers = async (req, res, next) => {
   const { username, email, password } = req.body;
 
-  if (!username || !email || !password) return res.status(400).json({ message: 'Fields required: username, email and password' });
-
   try {
+    if (!username || !email || !password) throw BadRequestError('Fields required: username, email and password');
+    if (username === email) throw ConflictError('Duplicate key error');
+
     const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(409).json({ message: 'Email is already in use' });
+
+    if (existingUser) throw ConflictError('Email is already in use');
 
     const newUser = new User({ username, email, password, role: UserRole.BASIC });
 
@@ -54,6 +54,6 @@ export const createUser: FnControllers = async (req, res) => {
 
     res.status(201).json(savedUser);
   } catch (error) {
-    res.status(500).json({ message: 'Error creating user: ', error: (error as Error).message });
+    next(error as Error);
   }
 };
