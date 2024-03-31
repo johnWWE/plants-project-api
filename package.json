@@ -11,7 +11,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "npm run lint && npm run format"
   },
   "keywords": [],
   "author": "qwik",
