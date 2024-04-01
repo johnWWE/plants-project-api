@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 import User from '../models/user.model';
+import { RequestHandler } from 'express';
 import { IUser, UserQuery, UserRole } from '../ts/interfaces';
-import { FnControllers } from '../ts/types';
 import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
 
-export const getUsers: FnControllers = async (req, res, next) => {
+export const getUsers: RequestHandler = async (req, res, next) => {
   try {
     const query: UserQuery = {};
     const { username } = req.query;
@@ -19,7 +20,7 @@ export const getUsers: FnControllers = async (req, res, next) => {
   }
 };
 
-export const getUserById: FnControllers = async (req, res, next) => {
+export const getUserById: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
 
   try {
@@ -37,7 +38,7 @@ export const getUserById: FnControllers = async (req, res, next) => {
   }
 };
 
-export const createUser: FnControllers = async (req, res, next) => {
+export const createUser: RequestHandler = async (req, res, next) => {
   const { username, email, password } = req.body;
 
   try {
@@ -48,7 +49,9 @@ export const createUser: FnControllers = async (req, res, next) => {
 
     if (existingUser) throw ConflictError('Email is already in use');
 
-    const newUser = new User({ username, email, password, role: UserRole.BASIC });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({ username, email, password: hashedPassword, role: UserRole.BASIC });
 
     const savedUser = await newUser.save();
 
@@ -58,7 +61,7 @@ export const createUser: FnControllers = async (req, res, next) => {
   }
 };
 
-export const updateUser: FnControllers = async (req, res, next) => {
+export const updateUser: RequestHandler = async (req, res, next) => {
   const { username, email, password, role }: Partial<IUser> = req.body;
   const { userId } = req.params;
 
@@ -101,7 +104,7 @@ export const updateUser: FnControllers = async (req, res, next) => {
   }
 };
 
-export const roleUpdateUser: FnControllers = async (req, res, next) => {
+export const roleUpdateUser: RequestHandler = async (req, res, next) => {
   const { role } = req.body;
   const { userId } = req.params;
 
@@ -127,7 +130,7 @@ export const roleUpdateUser: FnControllers = async (req, res, next) => {
   }
 };
 
-export const deleteUser: FnControllers = async (req, res, next) => {
+export const deleteUser: RequestHandler = async (req, res, next) => {
   const { userId } = req.params;
 
   try {
@@ -141,7 +144,7 @@ export const deleteUser: FnControllers = async (req, res, next) => {
 
     await User.findByIdAndDelete(userId);
 
-    res.status(200).json({ message: 'Usuario eliminado correctamente' });
+    res.status(200).json({ message: 'User deleted correctly' });
   } catch (error) {
     next(error as Error);
   }
