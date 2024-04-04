@@ -4,6 +4,7 @@ import User from '../models/user.model';
 import { RequestHandler } from 'express';
 import { IUser, UserQuery, UserRole } from '../ts/interfaces';
 import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
+import { hashPassword } from '../helpers/auth';
 
 export const getUsers: RequestHandler = async (req, res, next) => {
   try {
@@ -62,7 +63,7 @@ export const createUser: RequestHandler = async (req, res, next) => {
 };
 
 export const updateUser: RequestHandler = async (req, res, next) => {
-  const { username, email, password, role }: Partial<IUser> = req.body;
+  const { username, email, password }: Partial<IUser> = req.body;
   const { userId } = req.params;
 
   try {
@@ -84,15 +85,14 @@ export const updateUser: RequestHandler = async (req, res, next) => {
       updateQuery.email = email;
     }
 
-    if (password && password !== existingUser.password) updateQuery.password = password;
+    if (password) {
+      const isSamePassword = await bcrypt.compare(password, existingUser.password);
+      if (isSamePassword) throw BadRequestError('New password must be different from the current one');
 
-    if (role && role !== existingUser.role) {
-      if (!Object.values(UserRole).includes(role)) throw BadRequestError('Invalid role');
-      updateQuery.role = role;
+      updateQuery.password = await hashPassword(password);
     }
 
     if (Object.keys(updateQuery).length === 0) throw BadRequestError('No fields provided to update');
-    console.log(updateQuery);
 
     const updatedUser: IUser | null = await User.findOneAndUpdate({ _id: userId }, { $set: updateQuery }, { new: true });
 

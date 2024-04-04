@@ -1,4 +1,8 @@
 /* eslint-disable no-unused-vars */
+export interface Payload {
+  userId: string;
+}
+
 export enum UserRole {
   NONE = 'none',
   BASIC = 'basic',

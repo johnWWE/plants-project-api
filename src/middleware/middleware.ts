@@ -11,6 +11,7 @@ const app: Application = express();
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(morganConfig);
