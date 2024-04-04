@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import User from '../models/user.model';
 import { RequestHandler } from 'express';
 import { IUser, UserQuery, UserRole } from '../ts/interfaces';
 import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
-import { hashPassword } from '../helpers/auth';
+import { hashPassword, isMatchPassword } from '../helpers/auth';
 
 export const getUsers: RequestHandler = async (req, res, next) => {
   try {
@@ -50,7 +49,7 @@ export const createUser: RequestHandler = async (req, res, next) => {
 
     if (existingUser) throw ConflictError('Email is already in use');
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await hashPassword(password);
 
     const newUser = new User({ username, email, password: hashedPassword, role: UserRole.BASIC });
 
@@ -86,7 +85,7 @@ export const updateUser: RequestHandler = async (req, res, next) => {
     }
 
     if (password) {
-      const isSamePassword = await bcrypt.compare(password, existingUser.password);
+      const isSamePassword = await isMatchPassword(password, existingUser.password);
       if (isSamePassword) throw BadRequestError('New password must be different from the current one');
 
       updateQuery.password = await hashPassword(password);

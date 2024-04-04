@@ -7,6 +7,11 @@ export const hashPassword = async (password: string): Promise<string> => {
   return hashedPassword;
 };
 
+export const isMatchPassword = async (password: string, hashedPassword: string): Promise<boolean> => {
+  const isMatch: boolean = await bcrypt.compare(password, hashedPassword);
+  return isMatch;
+};
+
 export const generateToken = (userId: string): string => {
   const TOKEN_SECRET = process.env.TOKEN_SECRET || 'secret_key';
   const secretKey: string = TOKEN_SECRET;

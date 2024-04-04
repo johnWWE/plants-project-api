@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongoose';
+
 /* eslint-disable no-unused-vars */
 export interface Payload {
   userId: string;
@@ -10,6 +12,7 @@ export enum UserRole {
 }
 
 export interface IUser {
+  _id: ObjectId;
   username: string;
   email: string;
   password: string;

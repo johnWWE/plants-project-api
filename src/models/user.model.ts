@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { UserRole } from '../ts/interfaces';
-import { hashPassword } from '../helpers/auth';
+// import { hashPassword } from '../helpers/auth';
 
 const userSchema = new mongoose.Schema(
   {
@@ -15,18 +15,6 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
-
-userSchema.pre('save', async function (next) {
-  try {
-    if (!this.isModified('password')) return next();
-
-    this.password = await hashPassword(this.password);
-
-    next();
-  } catch (error) {
-    next(error as Error);
-  }
-});
 
 const User = mongoose.model('User', userSchema);
 
