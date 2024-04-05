@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
+
 import { UserRole } from '../ts/interfaces';
-// import { hashPassword } from '../helpers/auth';
 
 const userSchema = new mongoose.Schema(
   {

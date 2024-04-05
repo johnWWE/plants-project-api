@@ -1,7 +1,9 @@
 import { RequestHandler } from 'express';
+
+import User from '../models/user.model';
+
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
 import { IUser } from '../ts/interfaces';
-import User from '../models/user.model';
 import { generateToken, isMatchPassword } from '../helpers/auth';
 
 export const authLogin: RequestHandler = async (req, res, next) => {
@@ -26,12 +28,8 @@ export const authLogin: RequestHandler = async (req, res, next) => {
 
 export const authLogout: RequestHandler = (req, res, next) => {
   try {
-    const authToken = req.header('Authorization');
-
-    if (!authToken) throw BadRequestError('Token not provided');
-
     res.removeHeader('Authorization');
-    res.status(200).json({ message: 'Cerrar sesión exitoso' });
+    res.status(200).json({ message: 'Session closed successfully' });
   } catch (error) {
     next(error as Error);
   }

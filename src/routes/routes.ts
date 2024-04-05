@@ -1,6 +1,10 @@
-import express, { Router } from 'express';
-import userRouter from './user.routes';
+import express from 'express';
+
+import { Router } from 'express';
+
 import authRouter from './auth.routes';
+import userRouter from './user.routes';
+
 import { errorHandler } from '../middleware/errorHandler';
 
 const router: Router = express.Router();

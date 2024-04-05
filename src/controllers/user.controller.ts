@@ -1,9 +1,12 @@
 import mongoose from 'mongoose';
-import User from '../models/user.model';
+
 import { RequestHandler } from 'express';
-import { IUser, UserQuery, UserRole } from '../ts/interfaces';
+
+import User from '../models/user.model';
+
 import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
 import { hashPassword, isMatchPassword } from '../helpers/auth';
+import { IUser, UserQuery, UserRole } from '../ts/interfaces';
 
 export const getUsers: RequestHandler = async (req, res, next) => {
   try {

@@ -1,4 +1,5 @@
 import { RequestHandler } from 'express';
+
 import { BadRequestError } from '../utils/customErrors';
 
 // --header 'Authorization: Bearer <token>

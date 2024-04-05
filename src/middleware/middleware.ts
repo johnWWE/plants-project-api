@@ -1,8 +1,10 @@
-import express, { Application } from 'express';
-import morgan from 'morgan';
-import helmet from 'helmet';
-import cors from 'cors';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
+
+import { Application } from 'express';
 
 import morganConfig from '../config/morgan';
 

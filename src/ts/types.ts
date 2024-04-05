@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { TokenIndexer } from 'morgan';
 import { Request, Response } from 'express';
+import { TokenIndexer } from 'morgan';
 
 export type ConnectToMongoDB = (uri: string) => Promise<void>;
 

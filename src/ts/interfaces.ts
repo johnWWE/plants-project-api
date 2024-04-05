@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { ObjectId } from 'mongoose';
 
-/* eslint-disable no-unused-vars */
 export interface Payload {
   userId: string;
 }
