@@ -4,7 +4,7 @@ import User from '../models/user.model';
 
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
 import { IUser } from '../ts/interfaces';
-import { generateToken, isMatchPassword } from '../helpers/auth';
+import { addToRevokedTokens, generateToken, getToken, isMatchPassword } from '../helpers/auth';
 
 export const authLogin: RequestHandler = async (req, res, next) => {
   const { email, password } = req.body;
@@ -28,6 +28,12 @@ export const authLogin: RequestHandler = async (req, res, next) => {
 
 export const authLogout: RequestHandler = (req, res, next) => {
   try {
+    const token: string | Error = getToken(req);
+
+    if (token instanceof Error) throw token;
+
+    addToRevokedTokens(token);
+
     res.removeHeader('Authorization');
     res.status(200).json({ message: 'Session closed successfully' });
   } catch (error) {

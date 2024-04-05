@@ -6,10 +6,11 @@ import authRouter from './auth.routes';
 import userRouter from './user.routes';
 
 import { errorHandler } from '../middleware/errorHandler';
+import { authorize } from '../middleware/auth';
 
 const router: Router = express.Router();
 
-router.use('/users', userRouter);
+router.use('/users', authorize, userRouter);
 router.use('/auth', authRouter);
 
 router.use(errorHandler);
