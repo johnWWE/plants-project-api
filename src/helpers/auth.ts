@@ -1,9 +1,12 @@
-import jwt, { JwtPayload } from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
+import { JwtPayload } from 'jsonwebtoken';
+import { Types } from 'mongoose';
+
+import { BadRequestError } from '../utils/customErrors';
 import { Payload } from '../ts/interfaces';
 import { Request } from 'express';
-import { BadRequestError } from '../utils/customErrors';
 
 const TOKEN_SECRET = process.env.TOKEN_SECRET || 'secret_key';
 
@@ -17,10 +20,9 @@ export const isMatchPassword = async (password: string, hashedPassword: string):
   return isMatch;
 };
 
-export const getUserIdFromToken = (token: string): string => {
+export const getUserIdFromToken = (token: string): Types.ObjectId => {
   const payload: Payload = jwt.verify(token, TOKEN_SECRET) as Payload;
-
-  return payload.userId;
+  return new Types.ObjectId(payload.userId);
 };
 
 const revokedTokens: Set<string> = new Set();
@@ -34,7 +36,7 @@ export const isTokenRevoked = (token: string): boolean => {
 };
 
 export const generateToken = (userId: string): string => {
-  const token: string = jwt.sign({ userId } as Payload, TOKEN_SECRET, { expiresIn: '2m' });
+  const token: string = jwt.sign({ userId } as Payload, TOKEN_SECRET, { expiresIn: '1h' });
   return token;
 };
 
@@ -48,17 +50,13 @@ export const isExpiredToken = (token: string): boolean => {
   return expiresIn < 0;
 };
 
-export const verifyToken = (token: string): boolean | Error => {
-  try {
-    if (isExpiredToken(token)) throw BadRequestError('Token expired');
-    jwt.verify(token, TOKEN_SECRET);
-    return true;
-  } catch (error) {
-    return error as Error;
-  }
+export const verifyToken = (token: string): void => {
+  if (isExpiredToken(token)) throw BadRequestError('Token expired');
+
+  jwt.verify(token, TOKEN_SECRET);
 };
 
-export const getToken = (req: Request): string | Error => {
+export const getToken = (req: Request): string => {
   try {
     const authToken: string | undefined = req.header('Authorization');
 
@@ -72,14 +70,12 @@ export const getToken = (req: Request): string | Error => {
 
     if (!decodedToken) throw BadRequestError('jwt malformed');
 
-    const verifyTokenResult: boolean | Error = verifyToken(token);
-
-    if (verifyTokenResult instanceof Error) throw verifyTokenResult;
+    verifyToken(token);
 
     if (isTokenRevoked(token)) throw BadRequestError('Token revoked');
 
     return token;
   } catch (error) {
-    return error as Error;
+    throw error as Error;
   }
 };

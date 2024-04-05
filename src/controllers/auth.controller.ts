@@ -28,9 +28,7 @@ export const authLogin: RequestHandler = async (req, res, next) => {
 
 export const authLogout: RequestHandler = (req, res, next) => {
   try {
-    const token: string | Error = getToken(req);
-
-    if (token instanceof Error) throw token;
+    const token: string = getToken(req);
 
     addToRevokedTokens(token);
 
