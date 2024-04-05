@@ -7,30 +7,37 @@ import { BadRequestError, ForbiddenError } from '../utils/customErrors';
 import { getToken, getUserIdFromToken } from '../helpers/auth';
 import { AuthRequest, UserRole } from '../ts/interfaces';
 
-export const authorize: RequestHandler = async (req: AuthRequest, res: Response, next: NextFunction) => {
-  try {
-    const authToken: string = getToken(req);
+const roleOrderMap: Record<UserRole, number> = {
+  [UserRole.NONE]: 0,
+  [UserRole.BASIC]: 1,
+  [UserRole.ADMIN]: 2,
+};
 
-    const userId: Types.ObjectId = getUserIdFromToken(authToken);
+const getRoleOrder = (role: UserRole): number => {
+  return roleOrderMap[role] || 0;
+};
 
-    if (!userId) throw BadRequestError('User ID not provided');
+export const authorize = (requiredRole: UserRole): RequestHandler => {
+  return async (req: AuthRequest, res: Response, next: NextFunction) => {
+    try {
+      const authToken: string = getToken(req);
 
-    const user = await User.findById(userId);
+      const userId: Types.ObjectId = getUserIdFromToken(authToken);
 
-    if (!user) throw BadRequestError('User not found');
+      if (!userId) throw BadRequestError('User ID not provided');
 
-    if (user.role === UserRole.ADMIN) next();
+      const user = await User.findById(userId);
 
-    if (user.role === UserRole.BASIC) {
-      if (req.path === `/${userId}` && req.method === 'PATCH') throw ForbiddenError('Unauthorized to update user role');
+      if (!user) throw BadRequestError('User not found');
+      if (!Object.values(UserRole).includes(user.role)) throw ForbiddenError('User Role is not valid');
 
+      const userRoleOrder = getRoleOrder(user.role);
+      const requiredRoleOrder = getRoleOrder(requiredRole);
+
+      if (userRoleOrder < requiredRoleOrder) throw ForbiddenError('Unauthorized');
       next();
+    } catch (error) {
+      next(error as Error);
     }
-
-    if (user.role === UserRole.NONE) throw ForbiddenError('Unauthorized');
-
-    if (!(user.role in UserRole)) throw ForbiddenError('User Role is not valid');
-  } catch (error) {
-    next(error as Error);
-  }
+  };
 };

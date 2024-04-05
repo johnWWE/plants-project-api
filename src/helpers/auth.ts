@@ -8,7 +8,8 @@ import { BadRequestError } from '../utils/customErrors';
 import { Payload } from '../ts/interfaces';
 import { Request } from 'express';
 
-const TOKEN_SECRET = process.env.TOKEN_SECRET || 'secret_key';
+const TOKEN_SECRET: string = process.env.TOKEN_SECRET || 'secret_key';
+const revokedTokens: Set<string> = new Set();
 
 export const hashPassword = async (password: string): Promise<string> => {
   const hashedPassword: string = await bcrypt.hash(password, 10);
@@ -24,8 +25,6 @@ export const getUserIdFromToken = (token: string): Types.ObjectId => {
   const payload: Payload = jwt.verify(token, TOKEN_SECRET) as Payload;
   return new Types.ObjectId(payload.userId);
 };
-
-const revokedTokens: Set<string> = new Set();
 
 export const addToRevokedTokens = (token: string) => {
   revokedTokens.add(token);
@@ -72,7 +71,7 @@ export const getToken = (req: Request): string => {
 
     verifyToken(token);
 
-    if (isTokenRevoked(token)) throw BadRequestError('Token revoked');
+    if (isTokenRevoked(token)) throw BadRequestError('Token already revoked');
 
     return token;
   } catch (error) {
