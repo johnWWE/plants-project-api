@@ -17,6 +17,8 @@ export const getUsers: RequestHandler = async (req, res, next) => {
 
     const users: IUser[] = await User.find(query);
 
+    if (!users.length) throw NotFoundError('No users found');
+
     res.status(200).json(users);
   } catch (error) {
     next(error as Error);

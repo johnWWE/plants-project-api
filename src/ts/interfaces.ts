@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Types } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { Request } from 'express';
 
 export interface Payload {
@@ -26,4 +26,18 @@ export interface UserQuery {
 
 export interface AuthRequest extends Request {
   userId?: string;
+}
+
+export interface IPlantLabel extends Document {
+  label: string;
+}
+
+export interface IPlantLabelSchema extends IPlantLabel {
+  label: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface LabelQuery {
+  label?: { $regex: string; $options: string };
 }
