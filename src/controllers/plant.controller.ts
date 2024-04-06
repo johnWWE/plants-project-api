@@ -1,100 +1,107 @@
 import { RequestHandler } from 'express';
-
-import PlantLabel from '../models/plantLabel.model';
-
-import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
-import { IPlantLabel, LabelQuery } from '../ts/interfaces';
 import { Types } from 'mongoose';
 
-export const getPlantLabel: RequestHandler = async (req, res, next) => {
-  try {
-    const query: LabelQuery = {};
-    const { label } = req.query;
-    if (label) query.label = { $regex: label.toString(), $options: 'i' };
+import Plant from '../models/plant.model';
+import PlantLabel from '../models/plantLabel.model';
 
-    const plantLabels: IPlantLabel[] = await PlantLabel.find(query);
+import { BadRequestError, NotFoundError } from '../utils/customErrors';
+import { IPlant, IPlantLabel, RegexQuery } from '../ts/interfaces';
 
-    if (!plantLabels.length) throw NotFoundError('No plant(s) labels found');
-
-    res.status(200).json(plantLabels);
-  } catch (error) {
-    next(error as Error);
-  }
-};
-
-export const getPlantLabelById: RequestHandler = async (req, res, next) => {
-  try {
-    const id: string | undefined = req.params.id;
-    if (!id) throw BadRequestError('Plant label id not provided');
-    if (!Types.ObjectId.isValid(id)) throw NotFoundError('id is invalid');
-
-    const currentLabel: IPlantLabel | null = await PlantLabel.findById(id);
-    if (!currentLabel) throw NotFoundError('Plant label not found');
-
-    res.status(200).json(currentLabel);
-  } catch (error) {
-    next(error as Error);
-  }
-};
-
-export const createPlantLabel: RequestHandler = async (req, res, next) => {
-  const { label } = req.body;
-  try {
-    if (!label) throw BadRequestError('Label must be provided');
-
-    const existingLabel: IPlantLabel | null = await PlantLabel.findOne({ label });
-    if (existingLabel) throw ConflictError('Label already exists');
-
-    const newLabel: IPlantLabel = new PlantLabel({ label });
-
-    await newLabel.save();
-
-    res.status(200).json(newLabel);
-  } catch (error) {
-    next(error as Error);
-  }
-};
-
-export const updateLabel: RequestHandler = async (req, res, next) => {
-  try {
-    const id: string | undefined = req.params.id;
-    const label: string | undefined = req.body.label;
-
-    if (!id) throw BadRequestError('id not provided');
-    if (!label) throw BadRequestError('label is required');
-
-    if (!Types.ObjectId.isValid(id)) throw NotFoundError('id is invalid');
-
-    const currentLabel: IPlantLabel | null = await PlantLabel.findById(id);
-
-    if (!currentLabel) throw NotFoundError('label not found');
-
-    if (label === currentLabel.label) throw BadRequestError('Not be same as label');
-
-    currentLabel.label = label;
-    await currentLabel.save();
-
-    res.status(200).json({ message: 'Label saved successfully' });
-  } catch (error) {
-    next(error as Error);
-  }
-};
-
-export const deleteLabel: RequestHandler = async (req, res, next) => {
+export const getPlant: RequestHandler = async (req, res, next) => {
   try {
     const id: string | undefined = req.params.id;
 
-    if (!id) throw BadRequestError('id not provided');
+    if (!id) throw BadRequestError('Plant ID not provided');
 
-    if (!Types.ObjectId.isValid(id)) throw NotFoundError('id is invalid');
+    if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant ID is invalid');
 
-    const currentLabel: IPlantLabel | null = await PlantLabel.findById(id);
+    const plant: IPlant | null = await Plant.findById(id).populate('label').exec();
 
-    if (!currentLabel) throw NotFoundError('label not found');
+    if (!plant) throw NotFoundError('Plant not found');
 
-    await PlantLabel.findByIdAndDelete(id);
+    // const labels: string[] = plant.label.map((label: IPlantLabel) => label.label);
 
-    res.status(200).json({ message: 'Label deleted successfully' });
+    // const newPlant = {
+    //   _id: plant._id,
+    //   name: plant.name,
+    //   image: plant.image,
+    //   phallemia: plant.phallemia,
+    //   species: plant.species,
+    //   scientific_name: plant.scientific_name,
+    //   type: plant.type,
+    //   label: labels,
+    // };
+
+    // const newPlant = {
+    //   ...plant._doc,
+    //   label: labels,
+    // };
+
+    res.status(200).json(plant);
+  } catch (error) {
+    next(error as Error);
+  }
+};
+
+export const getPlants: RequestHandler = async (req, res, next) => {
+  try {
+    const query: RegexQuery = {};
+    const { name } = req.query;
+    if (name) query.name = { $regex: name.toString(), $options: 'i' };
+
+    const plants: IPlant[] = await Plant.find(query).populate('label');
+
+    if (!plants.length) throw NotFoundError('plant(s) not found');
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const dataPlants: IPlant[] | any = plants.map((plant: IPlant) => {
+      const labels: string[] = plant.label.map((label: IPlantLabel) => label.label);
+      console.log(labels);
+
+      return {
+        ...plant._doc,
+        label: labels,
+      };
+    });
+
+    res.status(200).json(dataPlants);
+  } catch (error) {
+    next(error as Error);
+  }
+};
+
+export const createPlant: RequestHandler = async (req, res, next) => {
+  try {
+    const data = req.body;
+    const { name, image, phallemia, species, scientific_name, label } = data;
+
+    if (!name || !image || !phallemia || !species || !scientific_name) throw BadRequestError('Invalid');
+
+    if (label) {
+      let idLabels: Types.ObjectId[] = [];
+      if (Array.isArray(label)) {
+        idLabels = await Promise.all(
+          label.map(async (x: string) => {
+            const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ label: x });
+            if (!plantLabel) throw NotFoundError(`Could not find label ${x}`);
+            return plantLabel.id;
+          }),
+        );
+      }
+      if (typeof label === 'string') {
+        const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ label });
+        if (!plantLabel) throw NotFoundError('Label not found');
+        idLabels.push(plantLabel.id);
+      }
+
+      data.label = idLabels;
+    }
+
+    const newPlant: IPlant = new Plant(data);
+
+    const savedPlant = await newPlant.save();
+
+    res.status(201).json(savedPlant);
   } catch (error) {
     next(error as Error);
   }

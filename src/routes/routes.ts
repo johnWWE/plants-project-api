@@ -4,6 +4,7 @@ import { Router } from 'express';
 
 import authRouter from './auth.routes';
 import plantRouter from './plant.routes';
+import plantLabelRouter from './plantLabel.routes';
 import userRouter from './user.routes';
 
 import { errorHandler } from '../middleware/errorHandler';
@@ -13,6 +14,7 @@ import { UserRole } from '../ts/interfaces';
 const router: Router = express.Router();
 
 router.use('/auth', authRouter);
+router.use('/plantlabel', plantLabelRouter);
 router.use('/plant', plantRouter);
 router.use('/users', authorize(UserRole.BASIC), userRouter);
 

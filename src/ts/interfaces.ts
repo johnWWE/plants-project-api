@@ -6,6 +6,10 @@ export interface Payload {
   userId: string;
 }
 
+export interface RegexQuery {
+  [key: string]: { $regex: string; $options: string };
+}
+
 export enum UserRole {
   NONE = 'none',
   BASIC = 'basic',
@@ -20,10 +24,6 @@ export interface IUser {
   role: UserRole;
 }
 
-export interface UserQuery {
-  username?: { $regex: string; $options: string };
-}
-
 export interface AuthRequest extends Request {
   userId?: string;
 }
@@ -33,11 +33,22 @@ export interface IPlantLabel extends Document {
 }
 
 export interface IPlantLabelSchema extends IPlantLabel {
-  label: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
-export interface LabelQuery {
-  label?: { $regex: string; $options: string };
+export interface IPlant extends Document {
+  name: string;
+  image: string;
+  phallemia: string;
+  species: string;
+  scientific_name: string;
+  type: string;
+  label: Array<IPlantLabel['id']>;
+  _doc?: IPlant;
+}
+
+export interface IPlantSchema extends IPlant {
+  createdAt: Date;
+  updatedAt: Date;
 }
