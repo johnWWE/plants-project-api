@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { PlantSchemaType } from '../ts/types';
+import { PlantType } from '../ts/interfaces';
 
 const plantSchema: PlantSchemaType = new Schema(
   {
@@ -8,7 +9,7 @@ const plantSchema: PlantSchemaType = new Schema(
     phallemia: { type: String, required: true },
     species: { type: String, required: true },
     scientific_name: { type: String, required: true },
-    type: { type: String },
+    type: { type: String, enum: Object.values(PlantType) },
     label: [{ type: Schema.Types.ObjectId, ref: 'PlantLabel' }],
   },
   { timestamps: true },

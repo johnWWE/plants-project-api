@@ -5,7 +5,7 @@ import Plant from '../models/plant.model';
 import PlantLabel from '../models/plantLabel.model';
 
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
-import { IPlant, IPlantLabel, RegexQuery } from '../ts/interfaces';
+import { IPlant, IPlantLabel, PlantType, RegexQuery } from '../ts/interfaces';
 
 export const getPlants: RequestHandler = async (req, res, next) => {
   try {
@@ -54,7 +54,7 @@ export const getPlant: RequestHandler = async (req, res, next) => {
 export const createPlant: RequestHandler = async (req, res, next) => {
   try {
     const data = req.body;
-    const { name, image, phallemia, species, scientific_name, label } = data;
+    const { name, image, phallemia, species, scientific_name, type, label } = data;
 
     if (!name || !image || !phallemia || !species || !scientific_name) throw BadRequestError('Invalid');
 
@@ -78,6 +78,8 @@ export const createPlant: RequestHandler = async (req, res, next) => {
       data.label = idLabels;
     }
 
+    if (!Object.values(PlantType).includes(type)) throw BadRequestError('Plant type invald');
+
     const newPlant: IPlant = new Plant(data);
 
     const savedPlant = await newPlant.save();
@@ -95,6 +97,8 @@ export const updatePlant: RequestHandler = async (req, res, next) => {
     if (!id) throw BadRequestError('Plant id is required');
 
     if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant id is invalid');
+
+    if (dataUpdate.type && !Object.values(PlantType).includes(dataUpdate.type)) throw BadRequestError('Plant type invald');
 
     const currentPlant: IPlant | null = await Plant.findById(id);
     if (!currentPlant) throw NotFoundError('Plant not found');

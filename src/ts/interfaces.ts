@@ -16,6 +16,20 @@ export enum UserRole {
   ADMIN = 'admin',
 }
 
+export enum PlantType {
+  TREE = 'arbol',
+  SHURB = 'arbusto',
+  PALM = 'palmera',
+  FLOWER = 'flor',
+  ORCHID = 'orquidea',
+  BROMELIAD = 'bromelia',
+  SUCCULENT = 'suculenta',
+  CARNIVOROUS = 'carnivora',
+  LEAF = 'foliare',
+  WATER_PLANT = 'planta de agua',
+  VINE = 'vide',
+}
+
 export interface IUser {
   _id: Types.ObjectId;
   username: string;
@@ -43,7 +57,7 @@ export interface IPlant extends Document {
   phallemia: string;
   species: string;
   scientific_name: string;
-  type: string;
+  type: PlantType;
   label: Array<IPlantLabel['id']>;
   _doc?: IPlant;
 }
