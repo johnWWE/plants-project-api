@@ -61,8 +61,21 @@ export interface IPlant extends Document {
   label: Array<IPlantLabel['id']>;
   _doc?: IPlant;
 }
-
 export interface IPlantSchema extends IPlant {
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IPlantCare extends Document {
+  id_plant: IPlant['id'];
+  light: string;
+  irrigation: string;
+  temperature: { min: number; max: number };
+  fertilization: string;
+  substratum: string;
+}
+
+export interface IPlantCareSchema extends IPlantCare {
   createdAt: Date;
   updatedAt: Date;
 }
