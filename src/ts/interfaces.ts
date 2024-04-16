@@ -73,6 +73,7 @@ export interface IPlantCare extends Document {
   temperature: { min: number; max: number };
   fertilization: string;
   substratum: string;
+  _doc?: IPlantCare;
 }
 
 export interface IPlantCareSchema extends IPlantCare {

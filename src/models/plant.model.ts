@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+
 import { PlantSchemaType } from '../ts/types';
 import { PlantType } from '../ts/interfaces';
 
