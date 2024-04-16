@@ -4,6 +4,7 @@ import { RegexQuery } from '../ts/interfaces';
 import PlantCare from '../models/plantCare.model';
 import Plant from '../models/plant.model';
 import { IPlant, IPlantCare } from '../ts/interfaces';
+import { Types } from 'mongoose';
 
 export const getAllPlantCare: RequestHandler = async (req, res, next) => {
   try {
@@ -25,6 +26,30 @@ export const getAllPlantCare: RequestHandler = async (req, res, next) => {
     });
 
     res.status(200).json(dataPlantsCare);
+  } catch (error) {
+    next(error as Error);
+  }
+};
+
+export const getPlantCareById: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) throw BadRequestError('id not provided');
+    if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant ID is invalid');
+
+    const plantCare = await PlantCare.findById(id).populate('id_plant');
+
+    if (!plantCare) throw NotFoundError('plant care not found');
+
+    const id_plant: string = plantCare.id_plant.name;
+
+    const dataPlantCare = {
+      ...plantCare._doc,
+      id_plant,
+    };
+
+    res.status(200).json(dataPlantCare);
   } catch (error) {
     next(error as Error);
   }
@@ -59,6 +84,11 @@ export const updatePlantCare: RequestHandler = async (req, res, next) => {
     const { id } = req.params;
     const data = req.body;
 
+    if (!id) throw BadRequestError('id not provided');
+    if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant ID is invalid');
+
+    if (data.id_plant && !Types.ObjectId.isValid(data.id_plant)) throw BadRequestError('id_plant is invalid');
+
     if (data.temperature && (typeof data.temperature.min !== 'number' || typeof data.temperature.max !== 'number'))
       throw BadRequestError('temperature min and max are number');
 
@@ -76,11 +106,14 @@ export const deletePlantCare: RequestHandler = async (req, res, next) => {
   try {
     const { id } = req.params;
 
+    if (!id) throw BadRequestError('id not provided');
+    if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant ID is invalid');
+
     const deletedPlantCare = await PlantCare.findByIdAndDelete(id);
 
     if (!deletedPlantCare) throw NotFoundError('plant care not found');
 
-    res.status(200).send(deletedPlantCare);
+    res.status(200).send({ message: 'plant care deleted successfully' });
   } catch (error) {
     next(error as Error);
   }
