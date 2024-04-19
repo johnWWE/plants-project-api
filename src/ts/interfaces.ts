@@ -28,6 +28,8 @@ export enum PlantType {
   LEAF = 'foliare',
   WATER_PLANT = 'planta de agua',
   VINE = 'vide',
+  AROMATIC = 'aroma',
+  FRUIT = 'fruta',
 }
 
 export interface IUser {

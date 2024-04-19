@@ -17,7 +17,7 @@ export const getAllPlantCare: RequestHandler = async (req, res, next) => {
     if (!plantsCare.length) throw NotFoundError('plant care not found');
 
     const dataPlantsCare = plantsCare.map((plantCare: IPlantCare) => {
-      const id_plant: string = plantCare.id_plant.name;
+      const id_plant: string = plantCare.id_plant?.name;
 
       return {
         ...plantCare._doc,
