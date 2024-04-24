@@ -63,6 +63,7 @@ export interface IPlant extends Document {
   label: Array<IPlantLabel['id']>;
   _doc?: IPlant;
 }
+
 export interface IPlantSchema extends IPlant {
   createdAt: Date;
   updatedAt: Date;
