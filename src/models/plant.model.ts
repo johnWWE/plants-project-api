@@ -12,6 +12,7 @@ const plantSchema: PlantSchemaType = new Schema(
     scientific_name: { type: String, required: true },
     type: { type: String, enum: Object.values(PlantType) },
     label: [{ type: Schema.Types.ObjectId, ref: 'PlantLabel' }],
+    leaf: { type: Number, required: true, default: 0 },
   },
   { timestamps: true },
 );

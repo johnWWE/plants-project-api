@@ -61,6 +61,7 @@ export interface IPlant extends Document {
   scientific_name: string;
   type: PlantType;
   label: Array<IPlantLabel['id']>;
+  leaf: number;
   _doc?: IPlant;
 }
 

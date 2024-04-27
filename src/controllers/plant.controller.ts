@@ -52,7 +52,9 @@ export const getPlant: RequestHandler = async (req, res, next) => {
 export const createPlant: RequestHandler = async (req, res, next) => {
   try {
     const data = req.body;
-    const { name, image, phallemia, species, scientific_name, type, label } = data;
+    const { name, image, phallemia, species, scientific_name, type, label, leaf } = data;
+
+    if (leaf && typeof leaf !== 'number') throw BadRequestError('Leaf must be a number');
 
     if (!name || !image || !phallemia || !species || !scientific_name) throw BadRequestError('Invalid');
 
