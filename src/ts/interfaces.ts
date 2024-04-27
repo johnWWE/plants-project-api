@@ -7,7 +7,7 @@ export interface Payload {
 }
 
 export interface RegexQuery {
-  [key: string]: { $regex: string; $options: string };
+  [key: string]: { $regex: RegExp | string; $options: string };
 }
 
 export enum UserRole {

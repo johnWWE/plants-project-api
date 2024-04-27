@@ -10,8 +10,10 @@ import { IPlant, IPlantLabel, PlantType, RegexQuery } from '../ts/interfaces';
 export const getPlants: RequestHandler = async (req, res, next) => {
   try {
     const query: RegexQuery = {};
-    const { name } = req.query;
+    const { name, type } = req.query;
+
     if (name) query.name = { $regex: name.toString(), $options: 'i' };
+    if (type) query.type = { $regex: type.toString(), $options: 'i' };
 
     const plants: IPlant[] = await Plant.find(query).populate('label');
 
