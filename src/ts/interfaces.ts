@@ -88,11 +88,11 @@ export interface IPlantSchema extends IPlant {
 
 export interface IPlantCare extends Document {
   id_plant: IPlant['id'];
-  light: string;
-  irrigation: string;
+  light: { [key: string]: string };
+  irrigation: { [key: string]: string };
   temperature: { min: number; max: number };
-  fertilization: string;
-  substratum: string;
+  fertilization: { [key: string]: string };
+  substratum: { [key: string]: string };
   _doc?: IPlantCare;
 }
 

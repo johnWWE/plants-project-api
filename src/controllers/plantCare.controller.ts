@@ -1,10 +1,12 @@
+import { Types } from 'mongoose';
 import { RequestHandler } from 'express';
+
+import Plant from '../models/plant.model';
+import PlantCare from '../models/plantCare.model';
+
 import { BadRequestError, NotFoundError, ConflictError } from '../utils/customErrors';
 import { RegexQuery } from '../ts/interfaces';
-import PlantCare from '../models/plantCare.model';
-import Plant from '../models/plant.model';
 import { IPlant, IPlantCare } from '../ts/interfaces';
-import { Types } from 'mongoose';
 
 export const getAllPlantCare: RequestHandler = async (req, res, next) => {
   try {
@@ -12,20 +14,11 @@ export const getAllPlantCare: RequestHandler = async (req, res, next) => {
     const { id_plant } = req.query;
     if (id_plant) query.name = { $regex: id_plant.toString(), $options: 'i' };
 
-    const plantsCare = await PlantCare.find(query).populate('id_plant');
+    const plantsCare = await PlantCare.find(query);
 
     if (!plantsCare.length) throw NotFoundError('plant care not found');
 
-    const dataPlantsCare = plantsCare.map((plantCare: IPlantCare) => {
-      const id_plant: string = plantCare.id_plant?.name;
-
-      return {
-        ...plantCare._doc,
-        id_plant,
-      };
-    });
-
-    res.status(200).json(dataPlantsCare);
+    res.status(200).json(plantsCare);
   } catch (error) {
     next(error as Error);
   }
@@ -38,18 +31,11 @@ export const getPlantCareById: RequestHandler = async (req, res, next) => {
     if (!id) throw BadRequestError('id not provided');
     if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant ID is invalid');
 
-    const plantCare = await PlantCare.findById(id).populate('id_plant');
+    const plantCare = await PlantCare.findById(id);
 
     if (!plantCare) throw NotFoundError('plant care not found');
 
-    const id_plant: string = plantCare.id_plant.name;
-
-    const dataPlantCare = {
-      ...plantCare._doc,
-      id_plant,
-    };
-
-    res.status(200).json(dataPlantCare);
+    res.status(200).json(plantCare);
   } catch (error) {
     next(error as Error);
   }
