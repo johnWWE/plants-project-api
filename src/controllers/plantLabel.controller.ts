@@ -1,8 +1,10 @@
-import { RequestHandler } from 'express';
-import { IPlantLabel, RegexQuery } from '../ts/interfaces';
-import PlantLabel from '../models/plantLabel.model';
-import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
 import { Types } from 'mongoose';
+import { RequestHandler } from 'express';
+
+import PlantLabel from '../models/plantLabel.model';
+
+import { IPlantLabel, RegexQuery } from '../ts/interfaces';
+import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
 
 export const getPlantLabel: RequestHandler = async (req, res, next) => {
   try {
@@ -38,9 +40,11 @@ export const getPlantLabelById: RequestHandler = async (req, res, next) => {
 export const createPlantLabel: RequestHandler = async (req, res, next) => {
   const { label } = req.body;
   try {
-    if (!label) throw BadRequestError('Label must be provided');
+    if (!label || typeof label !== 'object' || Object.keys(label).length === 0) {
+      throw BadRequestError('Label must be provided as a non-empty object');
+    }
 
-    const existingLabel: IPlantLabel | null = await PlantLabel.findOne({ label });
+    const existingLabel: IPlantLabel | null = await PlantLabel.findOne({ 'label.en': label.en });
     if (existingLabel) throw ConflictError('Label already exists');
 
     const newLabel: IPlantLabel = new PlantLabel({ label });
@@ -56,10 +60,12 @@ export const createPlantLabel: RequestHandler = async (req, res, next) => {
 export const updateLabel: RequestHandler = async (req, res, next) => {
   try {
     const id: string | undefined = req.params.id;
-    const label: string | undefined = req.body.label;
+    const updatedLabel: { [key: string]: string } | undefined = req.body.label;
 
     if (!id) throw BadRequestError('id not provided');
-    if (!label) throw BadRequestError('label is required');
+    if (!updatedLabel || typeof updatedLabel !== 'object' || Object.keys(updatedLabel).length === 0) {
+      throw BadRequestError('Invalid label format');
+    }
 
     if (!Types.ObjectId.isValid(id)) throw NotFoundError('id is invalid');
 
@@ -67,9 +73,10 @@ export const updateLabel: RequestHandler = async (req, res, next) => {
 
     if (!currentLabel) throw NotFoundError('label not found');
 
-    if (label === currentLabel.label) throw BadRequestError('Not be same as label');
+    const labelChanged = Object.keys(updatedLabel).some((key) => updatedLabel[key] !== currentLabel.label[key]);
+    if (!labelChanged) throw BadRequestError('Label must be different from current one');
 
-    currentLabel.label = label;
+    currentLabel.label = updatedLabel;
     await currentLabel.save();
 
     res.status(200).json({ message: 'Label saved successfully' });

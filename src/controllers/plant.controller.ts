@@ -20,7 +20,7 @@ export const getPlants: RequestHandler = async (req, res, next) => {
     if (!plants.length) throw NotFoundError('plant(s) not found');
 
     const dataPlants = plants.map((plant: IPlant) => {
-      const labels: string[] = plant.label.map((label: IPlantLabel) => label.label);
+      const labels: { [key: string]: string }[] = plant.label.map((label: IPlantLabel) => label.label); // Cambiar el tipo de labels
       return {
         ...plant._doc,
         label: labels,

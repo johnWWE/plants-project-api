@@ -4,7 +4,7 @@ import { PlantLabelSchemaType } from '../ts/types';
 
 const plantLabelSchema: PlantLabelSchemaType = new mongoose.Schema(
   {
-    label: { type: String, required: true, unique: true },
+    label: { type: Map, of: String },
   },
   {
     timestamps: true,

@@ -25,11 +25,27 @@ export enum PlantType {
   BROMELIAD = 'bromelia',
   SUCCULENT = 'suculenta',
   CARNIVOROUS = 'carnivora',
-  LEAF = 'foliare',
+  FOLIARE = 'foliare',
   WATER_PLANT = 'planta de agua',
   VINE = 'vide',
   AROMATIC = 'aroma',
   FRUIT = 'fruta',
+}
+
+export enum PlantTypeEn {
+  TREE = 'tree',
+  SHURB = 'shurb',
+  PALM = 'palm',
+  FLOWER = 'flower',
+  ORCHID = 'orchid',
+  BROMELIAD = 'bromeliad',
+  SUCCULENT = 'suculent',
+  CARNIVOROUS = 'carnivorous',
+  FOLIARE = 'foliare',
+  WATER_PLANT = 'water plant',
+  VINE = 'vine',
+  AROMATIC = 'aromatic',
+  FRUIT = 'fruit',
 }
 
 export interface IUser {
@@ -45,7 +61,7 @@ export interface AuthRequest extends Request {
 }
 
 export interface IPlantLabel extends Document {
-  label: string;
+  label: { [key: string]: string };
 }
 
 export interface IPlantLabelSchema extends IPlantLabel {
