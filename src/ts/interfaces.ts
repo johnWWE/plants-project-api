@@ -27,7 +27,6 @@ export enum PlantTypeEn {
   CARNIVOROUS = 'carnivorous',
   FOLIARE = 'foliare',
   WATER_PLANT = 'water plant',
-  VINE = 'vine',
   AROMATIC = 'aromatic',
   FRUIT = 'fruit',
 }
@@ -43,7 +42,6 @@ export enum PlantTypeEs {
   CARNIVOROUS = 'carnívora',
   FOLIARE = 'foliar',
   WATER_PLANT = 'planta acuática',
-  VINE = 'vid',
   AROMATIC = 'aromática',
   FRUIT = 'fruta',
 }
