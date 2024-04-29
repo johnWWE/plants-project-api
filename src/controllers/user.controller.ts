@@ -6,16 +6,18 @@ import User from '../models/user.model';
 
 import { BadRequestError, ConflictError, NotFoundError } from '../utils/customErrors';
 import { hashPassword, isMatchPassword } from '../helpers/auth';
-import { IUser, UserQuery, UserRole } from '../ts/interfaces';
+import { IUser, RegexQuery, UserRole } from '../ts/interfaces';
 
 export const getUsers: RequestHandler = async (req, res, next) => {
   try {
-    const query: UserQuery = {};
+    const query: RegexQuery = {};
     const { username } = req.query;
 
     if (username) query.username = { $regex: username.toString(), $options: 'i' };
 
     const users: IUser[] = await User.find(query);
+
+    if (!users.length) throw NotFoundError('No users found');
 
     res.status(200).json(users);
   } catch (error) {
