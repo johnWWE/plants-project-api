@@ -5,7 +5,8 @@ import Plant from '../models/plant.model';
 import PlantLabel from '../models/plantLabel.model';
 
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
-import { IPlant, IPlantLabel, PlantType, RegexQuery } from '../ts/interfaces';
+import { IPlant, IPlantLabel, PlantTypeEn, PlantTypeEs, RegexQuery } from '../ts/interfaces';
+import { isValidPlantType } from '../helpers/plant';
 
 export const getPlants: RequestHandler = async (req, res, next) => {
   try {
@@ -15,9 +16,11 @@ export const getPlants: RequestHandler = async (req, res, next) => {
     if (name) query.name = { $regex: name.toString(), $options: 'i' };
     if (type) query.type = { $regex: type.toString(), $options: 'i' };
 
-    const plants: IPlant[] = await Plant.find(query).populate('label');
+    let plants: IPlant[] = await Plant.find(query).populate('label');
 
     if (!plants.length) throw NotFoundError('plant(s) not found');
+
+    plants = await Plant.find(query).populate('label');
 
     const dataPlants = plants.map((plant: IPlant) => {
       const labels: { [key: string]: string }[] = plant.label.map((label: IPlantLabel) => label.label); // Cambiar el tipo de labels
@@ -54,25 +57,25 @@ export const getPlant: RequestHandler = async (req, res, next) => {
 export const createPlant: RequestHandler = async (req, res, next) => {
   try {
     const data = req.body;
-    const { name, image, phallemia, species, scientific_name, type, label, leaf } = data;
+    const { name, image, species, scientific_name, type, label, leaf } = data;
 
     if (leaf && typeof leaf !== 'number') throw BadRequestError('Leaf must be a number');
 
-    if (!name || !image || !phallemia || !species || !scientific_name) throw BadRequestError('Invalid');
+    if (!name || !image || !species || !scientific_name) throw BadRequestError('Invalid');
 
     if (label) {
       let idLabels: Types.ObjectId[] = [];
       if (Array.isArray(label)) {
         idLabels = await Promise.all(
           label.map(async (x: string) => {
-            const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ label: x });
+            const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ $or: [{ 'label.en': x }, { 'label.es': x }] });
             if (!plantLabel) throw NotFoundError(`Could not find label ${x}`);
             return plantLabel.id;
           }),
         );
       }
       if (typeof label === 'string') {
-        const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ label });
+        const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ $or: [{ 'label.en': label }, { 'label.es': label }] });
         if (!plantLabel) throw NotFoundError('Label not found');
         idLabels.push(plantLabel.id);
       }
@@ -80,7 +83,23 @@ export const createPlant: RequestHandler = async (req, res, next) => {
       data.label = idLabels;
     }
 
-    if (!Object.values(PlantType).includes(type)) throw BadRequestError('Plant type invald');
+    const plantType: { en?: string; es?: string } = {};
+
+    if (isValidPlantType(type)) {
+      if (Object.values(PlantTypeEn).includes(type as PlantTypeEn)) {
+        plantType.en = type;
+        const key = Object.keys(PlantTypeEn).find((key) => PlantTypeEn[key as keyof typeof PlantTypeEn] === type);
+        plantType.es = key ? PlantTypeEs[key as keyof typeof PlantTypeEs] : undefined;
+      } else if (Object.values(PlantTypeEs).includes(type as PlantTypeEs)) {
+        plantType.es = type;
+        const key = Object.keys(PlantTypeEs).find((key) => PlantTypeEs[key as keyof typeof PlantTypeEs] === type);
+        plantType.en = key ? PlantTypeEn[key as keyof typeof PlantTypeEn] : undefined;
+      }
+
+      data.type = plantType;
+    } else {
+      throw BadRequestError('Invalid plant type');
+    }
 
     const newPlant: IPlant = new Plant(data);
 
@@ -100,7 +119,7 @@ export const updatePlant: RequestHandler = async (req, res, next) => {
 
     if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant id is invalid');
 
-    if (dataUpdate.type && !Object.values(PlantType).includes(dataUpdate.type)) throw BadRequestError('Plant type invald');
+    if (dataUpdate.type && !isValidPlantType(dataUpdate.type)) throw BadRequestError('Invalid plant type');
 
     const currentPlant: IPlant | null = await Plant.findById(id);
     if (!currentPlant) throw NotFoundError('Plant not found');
@@ -110,26 +129,47 @@ export const updatePlant: RequestHandler = async (req, res, next) => {
       if (Array.isArray(dataUpdate.label)) {
         idLabels = await Promise.all(
           dataUpdate.label.map(async (x: string) => {
-            const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ label: x });
+            const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ $or: [{ 'label.en': x }, { 'label.es': x }] });
             if (!plantLabel) throw NotFoundError(`Could not find label ${x}`);
             return plantLabel.id;
           }),
         );
       }
       if (typeof dataUpdate.label === 'string') {
-        const plantLabel: IPlantLabel | null = await PlantLabel.findOne({ label: dataUpdate.label });
-        if (!plantLabel) throw NotFoundError('Label not found');
+        const plantLabel: IPlantLabel | null = await PlantLabel.findOne({
+          $or: [{ 'label.en': dataUpdate.label }, { 'label.es': dataUpdate.label }],
+        });
+        if (!plantLabel) throw NotFoundError(`Could not find label ${dataUpdate.label}`);
         idLabels.push(plantLabel.id);
       }
 
       dataUpdate.label = idLabels;
     }
 
-    const plantUpdate: IPlant = Object.assign(currentPlant, dataUpdate);
+    const plantType: { en?: string; es?: string } = {};
 
-    const savedPlant: IPlant = await plantUpdate.save();
+    if (dataUpdate.type) {
+      if (isValidPlantType(dataUpdate.type)) {
+        if (Object.values(PlantTypeEn).includes(dataUpdate.type as PlantTypeEn)) {
+          plantType.en = dataUpdate.type;
+          const key = Object.keys(PlantTypeEn).find((key) => PlantTypeEn[key as keyof typeof PlantTypeEn] === dataUpdate.type);
+          plantType.es = key ? PlantTypeEs[key as keyof typeof PlantTypeEs] : undefined;
+        } else if (Object.values(PlantTypeEs).includes(dataUpdate.type as PlantTypeEs)) {
+          plantType.es = dataUpdate.type;
+          const key = Object.keys(PlantTypeEs).find((key) => PlantTypeEs[key as keyof typeof PlantTypeEs] === dataUpdate.type);
+          plantType.en = key ? PlantTypeEn[key as keyof typeof PlantTypeEn] : undefined;
+        }
 
-    res.status(200).send({ message: 'Update successfully', data: savedPlant });
+        dataUpdate.type = plantType;
+      } else {
+        throw BadRequestError('Invalid plant type');
+      }
+    }
+
+    const plantUpdate: IPlant | null = await Plant.findByIdAndUpdate(id, dataUpdate, { new: true });
+    if (!plantUpdate) throw NotFoundError('Plant not found');
+
+    res.status(200).send({ message: 'Update successfully', data: plantUpdate });
   } catch (error) {
     next(error as Error);
   }

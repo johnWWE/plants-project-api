@@ -16,22 +16,6 @@ export enum UserRole {
   ADMIN = 'admin',
 }
 
-export enum PlantType {
-  TREE = 'arbol',
-  SHURB = 'arbusto',
-  PALM = 'palmera',
-  FLOWER = 'flor',
-  ORCHID = 'orquidea',
-  BROMELIAD = 'bromelia',
-  SUCCULENT = 'suculenta',
-  CARNIVOROUS = 'carnivora',
-  FOLIARE = 'foliare',
-  WATER_PLANT = 'planta de agua',
-  VINE = 'vide',
-  AROMATIC = 'aroma',
-  FRUIT = 'fruta',
-}
-
 export enum PlantTypeEn {
   TREE = 'tree',
   SHURB = 'shurb',
@@ -46,6 +30,27 @@ export enum PlantTypeEn {
   VINE = 'vine',
   AROMATIC = 'aromatic',
   FRUIT = 'fruit',
+}
+
+export enum PlantTypeEs {
+  TREE = 'árbol',
+  SHURB = 'arbusto',
+  PALM = 'palmera',
+  FLOWER = 'flor',
+  ORCHID = 'orquídea',
+  BROMELIAD = 'bromelia',
+  SUCCULENT = 'suculenta',
+  CARNIVOROUS = 'carnívora',
+  FOLIARE = 'foliar',
+  WATER_PLANT = 'planta acuática',
+  VINE = 'vid',
+  AROMATIC = 'aromática',
+  FRUIT = 'fruta',
+}
+
+export interface PlantType {
+  en: PlantTypeEn;
+  es: PlantTypeEs;
 }
 
 export interface IUser {
@@ -70,11 +75,10 @@ export interface IPlantLabelSchema extends IPlantLabel {
 }
 
 export interface IPlant extends Document {
-  name: string;
+  name: { [key: string]: string };
   image: string;
-  phallemia: string;
-  species: string;
-  scientific_name: string;
+  species: { [key: string]: string };
+  scientific_name: { [key: string]: string };
   type: PlantType;
   label: Array<IPlantLabel['id']>;
   leaf: number;

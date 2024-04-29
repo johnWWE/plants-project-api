@@ -5,20 +5,21 @@ import Plant from '../models/plant.model';
 import PlantCare from '../models/plantCare.model';
 
 import { BadRequestError, NotFoundError, ConflictError } from '../utils/customErrors';
-import { RegexQuery } from '../ts/interfaces';
 import { IPlant, IPlantCare } from '../ts/interfaces';
 
 export const getAllPlantCare: RequestHandler = async (req, res, next) => {
   try {
-    const query: RegexQuery = {};
+    const query: { id_plant?: string } = {};
+
     const { id_plant } = req.query;
-    if (id_plant) query.name = { $regex: id_plant.toString(), $options: 'i' };
 
-    const plantsCare = await PlantCare.find(query);
+    if (typeof id_plant === 'string' && Types.ObjectId.isValid(id_plant.toString())) query.id_plant = id_plant;
 
-    if (!plantsCare.length) throw NotFoundError('plant care not found');
+    const plantCare = await PlantCare.find(query);
 
-    res.status(200).json(plantsCare);
+    if (!plantCare.length) throw NotFoundError('Plant care not found');
+
+    res.status(200).json(plantCare);
   } catch (error) {
     next(error as Error);
   }
