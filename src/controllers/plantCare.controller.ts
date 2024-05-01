@@ -45,9 +45,7 @@ export const getPlantCareById: RequestHandler = async (req, res, next) => {
 export const createPlantCare: RequestHandler = async (req, res, next) => {
   try {
     const data = req.body;
-    const { id_plant, light, irrigation, temperature, fertilization, substratum } = data;
-
-    if (typeof temperature.min !== 'number' || typeof temperature.max !== 'number') throw BadRequestError('temperature min and max are number');
+    const { id_plant, light, irrigation, fertilization, substratum } = data;
 
     if (!id_plant || !light || !irrigation || !fertilization || !substratum) throw BadRequestError('All fields are required');
 
@@ -75,9 +73,6 @@ export const updatePlantCare: RequestHandler = async (req, res, next) => {
     if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant ID is invalid');
 
     if (data.id_plant && !Types.ObjectId.isValid(data.id_plant)) throw BadRequestError('id_plant is invalid');
-
-    if (data.temperature && (typeof data.temperature.min !== 'number' || typeof data.temperature.max !== 'number'))
-      throw BadRequestError('temperature min and max are number');
 
     const updatedPlantCare = await PlantCare.findByIdAndUpdate(id, data, { new: true });
 
