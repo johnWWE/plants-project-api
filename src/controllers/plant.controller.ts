@@ -12,11 +12,25 @@ export const getPlants: RequestHandler = async (req, res, next) => {
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const query: any = {};
-    const { name, type } = req.query;
+    const { name, type, label } = req.query;
 
     if (name) query.$or = [{ 'name.en': { $regex: name.toString(), $options: 'i' } }, { 'name.es': { $regex: name.toString(), $options: 'i' } }];
 
     if (type) query.$or = [{ 'type.en': { $regex: type.toString(), $options: 'i' } }, { 'type.es': { $regex: type.toString(), $options: 'i' } }];
+
+    if (label) {
+      const labels = label.toString().split(',');
+      const labelIds: string[][] = await Promise.all(
+        labels.map(async (labelItem) => {
+          const label_id: string[] = await PlantLabel.find({
+            $or: [{ 'label.en': { $regex: labelItem.trim(), $options: 'i' } }, { 'label.es': { $regex: labelItem.trim(), $options: 'i' } }],
+          }).distinct('_id');
+          return label_id;
+        }),
+      );
+
+      query.label = { $all: labelIds.flat() };
+    }
 
     let plants: IPlant[] = await Plant.find(query).populate('label');
 
