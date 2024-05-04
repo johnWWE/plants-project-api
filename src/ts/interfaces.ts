@@ -101,3 +101,22 @@ export interface IPlantCareSchema extends IPlantCare {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface ISalesInf {
+  user_id: string;
+  quantity: number;
+  price: number;
+}
+
+export interface IPlantSalesInf extends Document {
+  _id: Types.ObjectId;
+  id_plant: Types.ObjectId;
+  price: number;
+  stock: number;
+  sales_inf: Array<ISalesInf>;
+}
+
+export interface IPlantSalesInfSchema extends IPlantSalesInf {
+  createdAt: Date;
+  updatedAt: Date;
+}
