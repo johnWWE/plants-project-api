@@ -8,9 +8,9 @@ const plantSalesInfSchema: PlantSalesInfType = new Schema(
     stock: { type: Number, required: true },
     sales_inf: [
       {
-        user_id: { type: String, required: true },
-        quantity: { type: Number, required: true },
-        price: { type: Number, required: true },
+        user_id: { type: String },
+        quantity: { type: Number },
+        price: { type: Number },
       },
     ],
   },
