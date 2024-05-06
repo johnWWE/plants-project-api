@@ -1,9 +1,10 @@
 import { RequestHandler } from 'express';
+import { Types } from 'mongoose';
 
 import PlantSalesInf from '../models/plantSalesInf.model';
+import SalesInf from '../models/salesInf.model';
 
-import { IPlantSalesInf } from '../ts/interfaces';
-import { Types } from 'mongoose';
+import { IPlantSalesInf, ISalesInf } from '../ts/interfaces';
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
 
 export const getPlantSalesInf: RequestHandler = async (req, res, next) => {
@@ -42,18 +43,31 @@ export const updatePlantSalesInf: RequestHandler = async (req, res, next) => {
   try {
     if (!Types.ObjectId.isValid(id)) throw BadRequestError('Invalid ID');
 
-    if (data.price && typeof data.price !== 'number') throw BadRequestError('Price must be a number');
+    const currentSalesInf: IPlantSalesInf | null = await PlantSalesInf.findById(id);
+    if (!currentSalesInf) throw NotFoundError('Plant sales information not found');
 
+    if (data.price && typeof data.price !== 'number') throw BadRequestError('Price must be a number');
     if (data.stock && typeof data.stock !== 'number') throw BadRequestError('Stock must be a number');
 
-    /* sales_inf: [{user_id: string, quantity: number, price: number}] */
-    /* data.sales_inf: {user_id, quantity, price} */
-    /* 1. user_id === data.sales_inf.user_id && current_data.sales_inf.price === price --> sum quantity */
-    /* 2. user_id === data.sales_inf.user_id && current_data.sales_inf.price !== price --> add in another object */
-    /* 3. user_id !== data.sales_inf.user_id  --> add in another object */
+    if (data.sales_inf) {
+      if (data.sales_inf.type !== 'add' && data.sales_inf.type !== 'remove') throw BadRequestError('Invalid sales_inf type');
+
+      if (!Types.ObjectId.isValid(data.sales_inf.id)) throw BadRequestError('Invalid Sales Inf ID');
+      const salesInf: ISalesInf | null = await SalesInf.findById(data.sales_inf.id);
+      if (!salesInf) throw NotFoundError('Sales information not found');
+
+      if (data.sales_inf.type === 'add') {
+        if (currentSalesInf.sales_inf.includes(data.sales_inf.id)) throw BadRequestError('Sales information already added');
+        currentSalesInf.sales_inf.push(data.sales_inf.id);
+      } else if (data.sales_inf.type === 'remove')
+        currentSalesInf.sales_inf = currentSalesInf.sales_inf.filter((saleInfId) => saleInfId.toString() !== data.sales_inf.id);
+
+      await currentSalesInf.save();
+      delete data.sales_inf;
+    }
+    console.log(data);
 
     const plantSalesInf: IPlantSalesInf | null = await PlantSalesInf.findByIdAndUpdate(id, data, { new: true });
-
     if (!plantSalesInf) throw NotFoundError('Plant sales information not found');
 
     res.status(200).send(plantSalesInf);

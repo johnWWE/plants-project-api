@@ -6,13 +6,7 @@ const plantSalesInfSchema: PlantSalesInfType = new Schema(
     id_plant: { type: Schema.Types.ObjectId, ref: 'Plant', required: true },
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
-    sales_inf: [
-      {
-        user_id: { type: String },
-        quantity: { type: Number },
-        price: { type: Number },
-      },
-    ],
+    sales_inf: [{ type: Schema.Types.ObjectId, ref: 'SalesInf', required: true, default: [] }],
   },
   {
     timestamps: true,

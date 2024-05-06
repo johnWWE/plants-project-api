@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { Schema } from 'mongoose';
 import { TokenIndexer } from 'morgan';
 
-import { IPlantCareSchema, IPlantLabelSchema, IPlantSalesInfSchema, IPlantSchema } from './interfaces';
+import { IPlantCareSchema, IPlantLabelSchema, IPlantSalesInfSchema, IPlantSchema, ISalesInf } from './interfaces';
 
 export type ConnectToMongoDB = (uri: string) => Promise<void>;
 
@@ -14,5 +14,7 @@ export type PlantLabelSchemaType = Schema<IPlantLabelSchema>;
 export type PlantSchemaType = Schema<IPlantSchema>;
 
 export type PlantCareSchemaType = Schema<IPlantCareSchema>;
+
+export type SalesInfType = Schema<ISalesInf>;
 
 export type PlantSalesInfType = Schema<IPlantSalesInfSchema>;
