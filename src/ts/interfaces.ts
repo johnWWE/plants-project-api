@@ -51,8 +51,7 @@ export interface PlantType {
   es: PlantTypeEs;
 }
 
-export interface IUser {
-  _id: Types.ObjectId;
+export interface IUser extends Document {
   username: string;
   email: string;
   password: string;
@@ -79,7 +78,7 @@ export interface IPlant extends Document {
   scientific_name: { [key: string]: string };
   type: PlantType;
   label: Array<IPlantLabel['id']>;
-  leaf: number;
+  leaf: Array<IUser['id']>;
   _doc?: IPlant;
 }
 

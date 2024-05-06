@@ -14,7 +14,7 @@ const plantSchema: PlantSchemaType = new Schema(
       es: { type: String, enum: Object.values(PlantTypeEs), required: true },
     },
     label: [{ type: Schema.Types.ObjectId, ref: 'PlantLabel' }],
-    leaf: { type: Number, required: true, default: 0 },
+    leaf: [{ type: Schema.Types.ObjectId, ref: 'User', required: true, default: [] }],
   },
   { timestamps: true },
 );

@@ -37,6 +37,8 @@ export const getPlants: RequestHandler = async (req, res, next) => {
 
     if (!plants.length) throw NotFoundError('plant(s) not found');
 
+    await Plant.updateMany(query, { leadf: [] });
+
     plants = await Plant.find(query).populate('label');
 
     const dataPlants = plants.map((plant: IPlant) => {
@@ -75,9 +77,7 @@ export const getPlant: RequestHandler = async (req, res, next) => {
 export const createPlant: RequestHandler = async (req, res, next) => {
   try {
     const data = req.body;
-    const { name, image, species, scientific_name, type, label, leaf } = data;
-
-    if (leaf && typeof leaf !== 'number') throw BadRequestError('Leaf must be a number');
+    const { name, image, species, scientific_name, type, label } = data;
 
     if (!name || !image || !species || !scientific_name) throw BadRequestError('Invalid');
 
