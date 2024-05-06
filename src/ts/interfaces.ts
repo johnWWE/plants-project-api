@@ -102,7 +102,7 @@ export interface IPlantCareSchema extends IPlantCare {
 }
 
 export interface ISalesInf {
-  user_id: string;
+  user_id: Types.ObjectId;
   quantity: number;
   price: number;
 }
