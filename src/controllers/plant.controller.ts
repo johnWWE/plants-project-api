@@ -5,16 +5,33 @@ import Plant from '../models/plant.model';
 import PlantLabel from '../models/plantLabel.model';
 
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
-import { IPlant, IPlantLabel, PlantTypeEn, PlantTypeEs, RegexQuery } from '../ts/interfaces';
+
+import { IPlant, IPlantLabel, PlantTypeEn, PlantTypeEs } from '../ts/interfaces';
 import { isValidPlantType } from '../helpers/plant';
 
 export const getPlants: RequestHandler = async (req, res, next) => {
   try {
-    const query: RegexQuery = {};
-    const { name, type } = req.query;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const query: any = {};
+    const { name, type, label } = req.query;
 
-    if (name) query.name = { $regex: name.toString(), $options: 'i' };
-    if (type) query.type = { $regex: type.toString(), $options: 'i' };
+    if (name) query.$or = [{ 'name.en': { $regex: name.toString(), $options: 'i' } }, { 'name.es': { $regex: name.toString(), $options: 'i' } }];
+
+    if (type) query.$or = [{ 'type.en': { $regex: type.toString(), $options: 'i' } }, { 'type.es': { $regex: type.toString(), $options: 'i' } }];
+
+    if (label) {
+      const labels = label.toString().split(',');
+      const labelIds: string[][] = await Promise.all(
+        labels.map(async (labelItem) => {
+          const label_id: string[] = await PlantLabel.find({
+            $or: [{ 'label.en': { $regex: labelItem.trim(), $options: 'i' } }, { 'label.es': { $regex: labelItem.trim(), $options: 'i' } }],
+          }).distinct('_id');
+          return label_id;
+        }),
+      );
+
+      query.label = { $all: labelIds.flat() };
+    }
 
     let plants: IPlant[] = await Plant.find(query).populate('label');
 
@@ -23,7 +40,8 @@ export const getPlants: RequestHandler = async (req, res, next) => {
     plants = await Plant.find(query).populate('label');
 
     const dataPlants = plants.map((plant: IPlant) => {
-      const labels: { [key: string]: string }[] = plant.label.map((label: IPlantLabel) => label.label); // Cambiar el tipo de labels
+
+      const labels: { [key: string]: string }[] = plant.label.map((label: IPlantLabel) => label.label);
       return {
         ...plant._doc,
         label: labels,

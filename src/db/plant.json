@@ -1,0 +1,722 @@
+[
+  {
+    "name": {
+      "en": "Oak",
+      "es": "Roble"
+    },
+    "image": "oak.jpg",
+    "species": "Quercus",
+    "scientific_name": "Quercus robur",
+    "type": { "en": "tree", "es": "árbol" },
+    "label": ["662fcbec5cc6ad30b71b103f"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Maple",
+      "es": "Arce"
+    },
+    "image": "maple.jpg",
+    "species": "Acer",
+    "scientific_name": "Acer saccharum",
+    "type": { "en": "tree", "es": "árbol" },
+    "label": ["662fcbec5cc6ad30b71b103f"],
+    "leaf": 7
+  },
+  {
+    "name": {
+      "en": "Pine",
+      "es": "Pino"
+    },
+    "image": "pine.jpg",
+    "species": "Pinus",
+    "scientific_name": "Pinus sylvestris",
+    "type": { "en": "tree", "es": "árbol" },
+    "label": ["662fcbec5cc6ad30b71b103f"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Cherry Blossom",
+      "es": "Cerezo en flor"
+    },
+    "image": "cherry_blossom.jpg",
+    "species": "Prunus serrulata",
+    "scientific_name": "Prunus serrulata",
+    "type": { "en": "tree", "es": "árbol" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 6
+  },
+  {
+    "name": {
+      "en": "Cedar",
+      "es": "Cedro"
+    },
+    "image": "cedar.jpg",
+    "species": "Cedrus",
+    "scientific_name": "Cedrus libani",
+    "type": { "en": "tree", "es": "árbol" },
+    "label": ["662fcbec5cc6ad30b71b103f"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Azalea",
+      "es": "Azalea"
+    },
+    "image": "azalea.jpg",
+    "species": "Rododendro",
+    "scientific_name": "Rhododendron spp.",
+    "type": { "en": "shurb", "es": "arbusto" },
+    "label": ["662fcbd55cc6ad30b71b1039"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Lavender",
+      "es": "Lavanda"
+    },
+    "image": "lavender.jpg",
+    "species": "Lavandula",
+    "scientific_name": "Lavandula spp.",
+    "type": { "en": "shurb", "es": "arbusto" },
+    "label": ["662fcbd55cc6ad30b71b1039"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Boxwood",
+      "es": "Boj"
+    },
+    "image": "boxwood.jpg",
+    "species": "Buxus",
+    "scientific_name": "Buxus spp.",
+    "type": { "en": "shurb", "es": "arbusto" },
+    "label": ["662fcbd55cc6ad30b71b1039"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Hydrangea",
+      "es": "Hortensia"
+    },
+    "image": "hydrangea.jpg",
+    "species": "Hydrangea",
+    "scientific_name": "Hydrangea spp.",
+    "type": { "en": "shurb", "es": "arbusto" },
+    "label": ["662fcbd55cc6ad30b71b1039"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Forsythia",
+      "es": "Forsitia"
+    },
+    "image": "forsythia.jpg",
+    "species": "Forsythia",
+    "scientific_name": "Forsythia spp.",
+    "type": { "en": "shurb", "es": "arbusto" },
+    "label": ["662fcbd55cc6ad30b71b1039"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Date Palm",
+      "es": "Palmera Datilera"
+    },
+    "image": "date_palm.jpg",
+    "species": "Phoenix dactylifera",
+    "scientific_name": "Phoenix dactylifera",
+    "type": { "en": "palm", "es": "palmera" },
+    "label": ["662fcbe25cc6ad30b71b103c", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 8
+  },
+  {
+    "name": {
+      "en": "Fan Palm",
+      "es": "Palmera Abanico"
+    },
+    "image": "fan_palm.jpg",
+    "species": "Washingtonia robusta",
+    "scientific_name": "Washingtonia robusta",
+    "type": { "en": "palm", "es": "palmera" },
+    "label": ["662fcbec5cc6ad30b71b103f", "662fcbf85cc6ad30b71b1042"],
+    "leaf": 10
+  },
+  {
+    "name": {
+      "en": "Coconut Palm",
+      "es": "Palmera de Coco"
+    },
+    "image": "coconut_palm.jpg",
+    "species": "Cocos nucifera",
+    "scientific_name": "Cocos nucifera",
+    "type": { "en": "palm", "es": "palmera" },
+    "label": ["662fcbe25cc6ad30b71b103c", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 15
+  },
+  {
+    "name": {
+      "en": "Sago Palm",
+      "es": "Palmera de Sagú"
+    },
+    "image": "sago_palm.jpg",
+    "species": "Cycas revoluta",
+    "scientific_name": "Cycas revoluta",
+    "type": { "en": "palm", "es": "palmera" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 20
+  },
+  {
+    "name": {
+      "en": "Bismarck Palm",
+      "es": "Palmera Bismarck"
+    },
+    "image": "bismarck_palm.jpg",
+    "species": "Bismarckia nobilis",
+    "scientific_name": "Bismarckia nobilis",
+    "type": { "en": "palm", "es": "palmera" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 12
+  },
+  {
+    "name": {
+      "en": "Rose",
+      "es": "Rosa"
+    },
+    "image": "rose.jpg",
+    "species": "Rosa",
+    "scientific_name": "Rosa spp.",
+    "type": { "en": "flower", "es": "flor" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Sunflower",
+      "es": "Girasol"
+    },
+    "image": "sunflower.jpg",
+    "species": "Helianthus annuus",
+    "scientific_name": "Helianthus annuus",
+    "type": { "en": "flower", "es": "flor" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Tulip",
+      "es": "Tulipán"
+    },
+    "image": "tulip.jpg",
+    "species": "Tulipa",
+    "scientific_name": "Tulipa spp.",
+    "type": { "en": "flower", "es": "flor" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Lily",
+      "es": "Lirio"
+    },
+    "image": "lily.jpg",
+    "species": "Lilium",
+    "scientific_name": "Lilium spp.",
+    "type": { "en": "flower", "es": "flor" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Daisy",
+      "es": "Margarita"
+    },
+    "image": "daisy.jpg",
+    "species": "Bellis perennis",
+    "scientific_name": "Bellis perennis",
+    "type": { "en": "flower", "es": "flor" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Phalaenopsis Orchid",
+      "es": "Orquídea Phalaenopsis"
+    },
+    "image": "phalaenopsis_orchid.jpg",
+    "species": "Phalaenopsis",
+    "scientific_name": "Phalaenopsis spp.",
+    "type": { "en": "orchid", "es": "orquídea" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Cattleya Orchid",
+      "es": "Orquídea Cattleya"
+    },
+    "image": "cattleya_orchid.jpg",
+    "species": "Cattleya",
+    "scientific_name": "Cattleya spp.",
+    "type": { "en": "orchid", "es": "orquídea" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Dendrobium Orchid",
+      "es": "Orquídea Dendrobium"
+    },
+    "image": "dendrobium_orchid.jpg",
+    "species": "Dendrobium",
+    "scientific_name": "Dendrobium spp.",
+    "type": { "en": "orchid", "es": "orquídea" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Oncidium Orchid",
+      "es": "Orquídea Oncidium"
+    },
+    "image": "oncidium_orchid.jpg",
+    "species": "Oncidium",
+    "scientific_name": "Oncidium spp.",
+    "type": { "en": "orchid", "es": "orquídea" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Vanda Orchid",
+      "es": "Orquídea Vanda"
+    },
+    "image": "vanda_orchid.jpg",
+    "species": "Vanda",
+    "scientific_name": "Vanda spp.",
+    "type": { "en": "orchid", "es": "orquídea" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 6
+  },
+  {
+    "name": {
+      "en": "Bromeliad",
+      "es": "Bromelia"
+    },
+    "image": "bromeliad.jpg",
+    "species": "Bromeliaceae",
+    "scientific_name": "Bromeliaceae",
+    "type": { "en": "bromeliad", "es": "bromelia" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Guzmania",
+      "es": "Guzmania"
+    },
+    "image": "guzmania.jpg",
+    "species": "Guzmania",
+    "scientific_name": "Guzmania spp.",
+    "type": { "en": "bromeliad", "es": "bromelia" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Aechmea",
+      "es": "Aechmea"
+    },
+    "image": "aechmea.jpg",
+    "species": "Aechmea",
+    "scientific_name": "Aechmea spp.",
+    "type": { "en": "bromeliad", "es": "bromelia" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Neoregelia",
+      "es": "Neoregelia"
+    },
+    "image": "neoregelia.jpg",
+    "species": "Neoregelia",
+    "scientific_name": "Neoregelia spp.",
+    "type": { "en": "bromeliad", "es": "bromelia" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Billbergia",
+      "es": "Billbergia"
+    },
+    "image": "billbergia.jpg",
+    "species": "Billbergia",
+    "scientific_name": "Billbergia spp.",
+    "type": { "en": "bromeliad", "es": "bromelia" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 6
+  },
+  {
+    "name": {
+      "en": "Aloe Vera",
+      "es": "Aloe Vera"
+    },
+    "image": "aloe_vera.jpg",
+    "species": "Aloe Vera",
+    "scientific_name": "Aloe Vera",
+    "type": { "en": "suculent", "es": "suculenta" },
+    "label": ["662fcc0f5cc6ad30b71b1048"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Echeveria",
+      "es": "Echeveria"
+    },
+    "image": "echeveria.jpg",
+    "species": "Echeveria",
+    "scientific_name": "Echeveria",
+    "type": { "en": "suculent", "es": "suculenta" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Jade Plant",
+      "es": "Planta de Jade"
+    },
+    "image": "jade_plant.jpg",
+    "species": "Crassula ovata",
+    "scientific_name": "Crassula ovata",
+    "type": { "en": "suculent", "es": "suculenta" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Sempervivum",
+      "es": "Sempervivum"
+    },
+    "image": "sempervivum.jpg",
+    "species": "Sempervivum",
+    "scientific_name": "Sempervivum",
+    "type": { "en": "suculent", "es": "suculenta" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 6
+  },
+  {
+    "name": {
+      "en": "Snake Plant",
+      "es": "Planta Serpiente"
+    },
+    "image": "snake_plant.jpg",
+    "species": "Sansevieria trifasciata",
+    "scientific_name": "Sansevieria trifasciata",
+    "type": { "en": "suculent", "es": "suculenta" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Venus Flytrap",
+      "es": "Atrapamoscas de Venus"
+    },
+    "image": "venus_flytrap.jpg",
+    "species": "Dionaea muscipula",
+    "scientific_name": "Dionaea muscipula",
+    "type": { "en": "carnivorous", "es": "carnívora" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fd3e35cc6ad30b71b10a3", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 6
+  },
+  {
+    "name": {
+      "en": "Pitcher Plant",
+      "es": "Planta Jarra"
+    },
+    "image": "pitcher_plant.jpg",
+    "species": "Nepenthes",
+    "scientific_name": "Nepenthes spp.",
+    "type": { "en": "carnivorous", "es": "carnívora" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fd3e35cc6ad30b71b10a3"],
+    "leaf": 8
+  },
+  {
+    "name": {
+      "en": "Sundew",
+      "es": "Rocío del Sol"
+    },
+    "image": "sundew.jpg",
+    "species": "Drosera",
+    "scientific_name": "Drosera spp.",
+    "type": { "en": "carnivorous", "es": "carnívora" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fd3e35cc6ad30b71b10a3"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Bladderwort",
+      "es": "Utricularia"
+    },
+    "image": "bladderwort.jpg",
+    "species": "Utricularia",
+    "scientific_name": "Utricularia spp.",
+    "type": { "en": "carnivorous", "es": "carnívora" },
+    "label": ["662fd3cf5cc6ad30b71b10a0", "662fd3e35cc6ad30b71b10a3"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Butterwort",
+      "es": "Pinguicula"
+    },
+    "image": "butterwort.jpg",
+    "species": "Pinguicula",
+    "scientific_name": "Pinguicula spp.",
+    "type": { "en": "carnivorous", "es": "carnívora" },
+    "label": ["662fcbf85cc6ad30b71b1042", "662fd3e35cc6ad30b71b10a3"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Boston Fern",
+      "es": "Helecho de Boston"
+    },
+    "image": "boston_fern.jpg",
+    "species": "Nephrolepis exaltata",
+    "scientific_name": "Nephrolepis exaltata",
+    "type": { "en": "foliare", "es": "foliar" },
+    "label": ["662fcbec5cc6ad30b71b103f"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Maidenhair Fern",
+      "es": "Helecho Adiantum"
+    },
+    "image": "maidenhair_fern.jpg",
+    "species": "Adiantum",
+    "scientific_name": "Adiantum spp.",
+    "type": { "en": "foliare", "es": "foliar" },
+    "label": ["662fcbec5cc6ad30b71b103f"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Peace Lily",
+      "es": "Lirio de la Paz"
+    },
+    "image": "peace_lily.jpg",
+    "species": "Spathiphyllum",
+    "scientific_name": "Spathiphyllum spp.",
+    "type": { "en": "foliare", "es": "foliar" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Spider Plant",
+      "es": "Planta Araña"
+    },
+    "image": "spider_plant.jpg",
+    "species": "Chlorophytum comosum",
+    "scientific_name": "Chlorophytum comosum",
+    "type": { "en": "foliare", "es": "foliar" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 6
+  },
+  {
+    "name": {
+      "en": "Fiddle Leaf Fig",
+      "es": "Higo Violin"
+    },
+    "image": "fiddle_leaf_fig.jpg",
+    "species": "Ficus lyrata",
+    "scientific_name": "Ficus lyrata",
+    "type": { "en": "foliare", "es": "foliar" },
+    "label": ["662fcbf85cc6ad30b71b1042"],
+    "leaf": 7
+  },
+  {
+    "name": {
+      "en": "Water Lily",
+      "es": "Lirio de Agua"
+    },
+    "image": "water_lily.jpg",
+    "species": "Nymphaea",
+    "scientific_name": "Nymphaea spp.",
+    "type": { "en": "water plant", "es": "planta acuática" },
+    "label": ["662fd3cf5cc6ad30b71b10a0", "662fcbf85cc6ad30b71b1042"],
+    "leaf": 1
+  },
+  {
+    "name": {
+      "en": "Lotus",
+      "es": "Loto"
+    },
+    "image": "lotus.jpg",
+    "species": "Nelumbo",
+    "scientific_name": "Nelumbo spp.",
+    "type": { "en": "water plant", "es": "planta acuática" },
+    "label": ["662fd3cf5cc6ad30b71b10a0", "662fcbf85cc6ad30b71b1042", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Water Hyacinth",
+      "es": "Jacinto de Agua"
+    },
+    "image": "water_hyacinth.jpg",
+    "species": "Eichhornia crassipes",
+    "scientific_name": "Eichhornia crassipes",
+    "type": { "en": "water plant", "es": "planta acuática" },
+    "label": ["662fd3cf5cc6ad30b71b10a0", "662fcbf85cc6ad30b71b1042", "662fcbec5cc6ad30b71b103f"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Amazon Sword",
+      "es": "Espada del Amazonas"
+    },
+    "image": "amazon_sword.jpg",
+    "species": "Echinodorus grisebachii",
+    "scientific_name": "Echinodorus grisebachii",
+    "type": { "en": "water plant", "es": "planta acuática" },
+    "label": ["662fd3cf5cc6ad30b71b10a0", "662fcbf85cc6ad30b71b1042"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Duckweed",
+      "es": "Lenteja de Agua"
+    },
+    "image": "duckweed.jpg",
+    "species": "Lemna",
+    "scientific_name": "Lemna spp.",
+    "type": { "en": "water plant", "es": "planta acuática" },
+    "label": ["662fd3cf5cc6ad30b71b10a0", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Lavender",
+      "es": "Lavanda"
+    },
+    "image": "lavender.jpg",
+    "species": "Lavandula",
+    "scientific_name": "Lavandula spp.",
+    "type": { "en": "aromatic", "es": "aromática" },
+    "label": ["662fcc045cc6ad30b71b1045", "662fcbf85cc6ad30b71b1042", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Mint",
+      "es": "Menta"
+    },
+    "image": "mint.jpg",
+    "species": "Mentha",
+    "scientific_name": "Mentha spp.",
+    "type": { "en": "aromatic", "es": "aromática" },
+    "label": ["662fcc045cc6ad30b71b1045", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Rosemary",
+      "es": "Romero"
+    },
+    "image": "rosemary.jpg",
+    "species": "Rosmarinus officinalis",
+    "scientific_name": "Rosmarinus officinalis",
+    "type": { "en": "aromatic", "es": "aromática" },
+    "label": ["662fcc045cc6ad30b71b1045", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Basil",
+      "es": "Albahaca"
+    },
+    "image": "basil.jpg",
+    "species": "Ocimum basilicum",
+    "scientific_name": "Ocimum basilicum",
+    "type": { "en": "aromatic", "es": "aromática" },
+    "label": ["662fcc045cc6ad30b71b1045", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 2
+  },
+  {
+    "name": {
+      "en": "Lemon Balm",
+      "es": "Melisa"
+    },
+    "image": "lemon_balm.jpg",
+    "species": "Melissa officinalis",
+    "scientific_name": "Melissa officinalis",
+    "type": { "en": "aromatic", "es": "aromática" },
+    "label": ["662fcc045cc6ad30b71b1045", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Apple",
+      "es": "Manzana"
+    },
+    "image": "apple.jpg",
+    "species": "Malus domestica",
+    "scientific_name": "Malus domestica",
+    "type": { "en": "fruit", "es": "fruta" },
+    "label": ["662fcbe25cc6ad30b71b103c", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 5
+  },
+  {
+    "name": {
+      "en": "Orange",
+      "es": "Naranja"
+    },
+    "image": "orange.jpg",
+    "species": "Citrus sinensis",
+    "scientific_name": "Citrus sinensis",
+    "type": { "en": "fruit", "es": "fruta" },
+    "label": ["662fcbe25cc6ad30b71b103c", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Banana",
+      "es": "Banana"
+    },
+    "image": "banana.jpg",
+    "species": "Musa",
+    "scientific_name": "Musa spp.",
+    "type": { "en": "fruit", "es": "fruta" },
+    "label": ["662fcbe25cc6ad30b71b103c", "662fd4775cc6ad30b71b10a6"],
+    "leaf": 4
+  },
+  {
+    "name": {
+      "en": "Strawberry",
+      "es": "Fresa"
+    },
+    "image": "strawberry.jpg",
+    "species": "Fragaria x ananassa",
+    "scientific_name": "Fragaria x ananassa",
+    "type": { "en": "fruit", "es": "fruta" },
+    "label": ["662fcbe25cc6ad30b71b103c", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 3
+  },
+  {
+    "name": {
+      "en": "Grapes",
+      "es": "Uvas"
+    },
+    "image": "grapes.jpg",
+    "species": "Vitis vinifera",
+    "scientific_name": "Vitis vinifera",
+    "type": { "en": "fruit", "es": "fruta" },
+    "label": ["662fcbe25cc6ad30b71b103c", "662fd4775cc6ad30b71b10a6", "662fcc0f5cc6ad30b71b1048"],
+    "leaf": 4
+  }
+]

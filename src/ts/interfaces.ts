@@ -27,7 +27,6 @@ export enum PlantTypeEn {
   CARNIVOROUS = 'carnivorous',
   FOLIARE = 'foliare',
   WATER_PLANT = 'water plant',
-  VINE = 'vine',
   AROMATIC = 'aromatic',
   FRUIT = 'fruit',
 }
@@ -43,7 +42,6 @@ export enum PlantTypeEs {
   CARNIVOROUS = 'carnívora',
   FOLIARE = 'foliar',
   WATER_PLANT = 'planta acuática',
-  VINE = 'vid',
   AROMATIC = 'aromática',
   FRUIT = 'fruta',
 }
@@ -94,13 +92,31 @@ export interface IPlantCare extends Document {
   id_plant: IPlant['id'];
   light: { [key: string]: string };
   irrigation: { [key: string]: string };
-  temperature: { min: number; max: number };
   fertilization: { [key: string]: string };
   substratum: { [key: string]: string };
   _doc?: IPlantCare;
 }
 
 export interface IPlantCareSchema extends IPlantCare {
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ISalesInf {
+  user_id: string;
+  quantity: number;
+  price: number;
+}
+
+export interface IPlantSalesInf extends Document {
+  _id: Types.ObjectId;
+  id_plant: Types.ObjectId;
+  price: number;
+  stock: number;
+  sales_inf: Array<ISalesInf>;
+}
+
+export interface IPlantSalesInfSchema extends IPlantSalesInf {
   createdAt: Date;
   updatedAt: Date;
 }

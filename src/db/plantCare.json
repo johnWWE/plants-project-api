@@ -1,0 +1,1143 @@
+[
+  {
+    "id_plant": "662ffa7ac15b8cd59e18917e",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18917f",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189180",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "bajo"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained acidic soil",
+      "es": "suelo ácido bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189181",
+    "light": {
+      "en": "full sun to partial shade",
+      "es": "pleno sol a sombra parcial"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189182",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "bajo"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189183",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "acidic, well-drained soil",
+      "es": "suelo ácido, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189184",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "low to moderate",
+      "es": "baja a moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189185",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "twice a year",
+      "es": "dos veces al año"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189186",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "rich, well-drained soil",
+      "es": "suelo rico, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189187",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "low to moderate",
+      "es": "baja a moderada"
+    },
+    "fertilization": {
+      "en": "twice a year",
+      "es": "dos veces al año"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189188",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "low to moderate",
+      "es": "baja a moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189189",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18918a",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18918b",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "low to moderate",
+      "es": "baja a moderada"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18918c",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "baja"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18918d",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "biweekly",
+      "es": "bisemanal"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18918e",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "rich, well-drained soil",
+      "es": "suelo rico, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18918f",
+    "light": {
+      "en": "full sun to partial shade",
+      "es": "pleno sol a sombra parcial"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189190",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "rich, well-drained soil",
+      "es": "suelo rico, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189191",
+    "light": {
+      "en": "full sun to partial shade",
+      "es": "pleno sol a sombra parcial"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189192",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "weekly",
+      "es": "semanal"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, airy potting mix",
+      "es": "mezcla de tierra bien drenada y aireada"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189193",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "weekly",
+      "es": "semanal"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, coarse potting mix",
+      "es": "mezcla de tierra bien drenada y gruesa"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189194",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "weekly",
+      "es": "semanal"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, coarse potting mix",
+      "es": "mezcla de tierra bien drenada y gruesa"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189195",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "weekly",
+      "es": "semanal"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, coarse potting mix",
+      "es": "mezcla de tierra bien drenada y gruesa"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189196",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "weekly",
+      "es": "semanal"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, coarse potting mix",
+      "es": "mezcla de tierra bien drenada y gruesa"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189197",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderado"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained potting mix",
+      "es": "mezcla de tierra bien drenada"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189198",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderado"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained potting mix",
+      "es": "mezcla de tierra bien drenada"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e189199",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderado"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained potting mix",
+      "es": "mezcla de tierra bien drenada"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18919a",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderado"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained potting mix",
+      "es": "mezcla de tierra bien drenada"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18919b",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderado"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained potting mix",
+      "es": "mezcla de tierra bien drenada"
+    }
+  },
+
+  {
+    "id_plant": "662ffa7ac15b8cd59e18919c",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "bajo"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18919d",
+    "light": {
+      "en": "bright direct light",
+      "es": "luz brillante directa"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "bajo"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained succulent mix",
+      "es": "mezcla de sustrato para suculentas bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18919e",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "bajo"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained succulent mix",
+      "es": "mezcla de sustrato para suculentas bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e18919f",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "bajo"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained succulent mix",
+      "es": "mezcla de sustrato para suculentas bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a0",
+    "light": {
+      "en": "low to bright indirect light",
+      "es": "luz baja a brillante indirecta"
+    },
+    "irrigation": {
+      "en": "low",
+      "es": "bajo"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a1",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "distilled water or rainwater",
+      "es": "agua destilada o de lluvia"
+    },
+    "fertilization": {
+      "en": "infrequent, with live prey",
+      "es": "poco frecuente, con presas vivas"
+    },
+    "substratum": {
+      "en": "acidic, nutrient-poor soil",
+      "es": "suelo ácido, pobre en nutrientes"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a2",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "distilled water or rainwater",
+      "es": "agua destilada o de lluvia"
+    },
+    "fertilization": {
+      "en": "infrequent, with live prey",
+      "es": "poco frecuente, con presas vivas"
+    },
+    "substratum": {
+      "en": "moist, acidic soil",
+      "es": "suelo húmedo, ácido"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a3",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "distilled water or rainwater",
+      "es": "agua destilada o de lluvia"
+    },
+    "fertilization": {
+      "en": "infrequent, with live prey",
+      "es": "poco frecuente, con presas vivas"
+    },
+    "substratum": {
+      "en": "acidic, sandy soil",
+      "es": "suelo ácido, arenoso"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a4",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "distilled water or rainwater",
+      "es": "agua destilada o de lluvia"
+    },
+    "fertilization": {
+      "en": "infrequent, with live prey",
+      "es": "poco frecuente, con presas vivas"
+    },
+    "substratum": {
+      "en": "aquatic environment",
+      "es": "ambiente acuático"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a5",
+    "light": {
+      "en": "bright, indirect light",
+      "es": "luz brillante e indirecta"
+    },
+    "irrigation": {
+      "en": "distilled water or rainwater",
+      "es": "agua destilada o de lluvia"
+    },
+    "fertilization": {
+      "en": "infrequent, with live prey",
+      "es": "poco frecuente, con presas vivas"
+    },
+    "substratum": {
+      "en": "moist, acidic soil",
+      "es": "suelo húmedo, ácido"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a6",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "regular, keep soil moist",
+      "es": "regular, mantener el suelo húmedo"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, acidic soil",
+      "es": "suelo bien drenado, ácido"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a7",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "regular, keep soil moist",
+      "es": "regular, mantener el suelo húmedo"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, rich soil",
+      "es": "suelo bien drenado, rico"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a8",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "regular, keep soil moist",
+      "es": "regular, mantener el suelo húmedo"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, rich soil",
+      "es": "suelo bien drenado, rico"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891a9",
+    "light": {
+      "en": "bright indirect light to partial shade",
+      "es": "luz brillante indirecta a sombra parcial"
+    },
+    "irrigation": {
+      "en": "regular, allow soil to dry slightly between waterings",
+      "es": "regular, permitir que el suelo se seque ligeramente entre riegos"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained, rich soil",
+      "es": "suelo bien drenado, rico"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891aa",
+    "light": {
+      "en": "bright indirect light",
+      "es": "luz brillante indirecta"
+    },
+    "irrigation": {
+      "en": "regular, allow soil to dry slightly between waterings",
+      "es": "regular, permitir que el suelo se seque ligeramente entre riegos"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained, rich soil",
+      "es": "suelo bien drenado, rico"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891ab",
+    "light": {
+      "en": "full sun to partial shade",
+      "es": "pleno sol a sombra parcial"
+    },
+    "irrigation": {
+      "en": "keep roots submerged in water",
+      "es": "mantener las raíces sumergidas en agua"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "muddy or silty bottom",
+      "es": "fondo fangoso o limoso"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891ac",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "keep roots submerged in water",
+      "es": "mantener las raíces sumergidas en agua"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "muddy or silty bottom",
+      "es": "fondo fangoso o limoso"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891ad",
+    "light": {
+      "en": "full sun to partial shade",
+      "es": "pleno sol a sombra parcial"
+    },
+    "irrigation": {
+      "en": "keep roots submerged in water",
+      "es": "mantener las raíces sumergidas en agua"
+    },
+    "fertilization": {
+      "en": "weekly during growing season",
+      "es": "semanal durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "floating on the water surface",
+      "es": "flotando en la superficie del agua"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891ae",
+    "light": {
+      "en": "moderate to bright",
+      "es": "moderada a brillante"
+    },
+    "irrigation": {
+      "en": "keep roots submerged in water or moist substrate",
+      "es": "mantener las raíces sumergidas en agua o en sustrato húmedo"
+    },
+    "fertilization": {
+      "en": "weekly",
+      "es": "semanal"
+    },
+    "substratum": {
+      "en": "aquarium substrate",
+      "es": "sustrato para acuarios"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891af",
+    "light": {
+      "en": "full sun to partial shade",
+      "es": "pleno sol a sombra parcial"
+    },
+    "irrigation": {
+      "en": "floating on the water surface",
+      "es": "flotando en la superficie del agua"
+    },
+    "fertilization": {
+      "en": "not required",
+      "es": "no requerida"
+    },
+    "substratum": {
+      "en": "floating on the water surface",
+      "es": "flotando en la superficie del agua"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b0",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "moderate",
+      "es": "moderada"
+    },
+    "fertilization": {
+      "en": "monthly during growing season",
+      "es": "mensual durante la temporada de crecimiento"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b1",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "moist, well-drained soil",
+      "es": "suelo húmedo, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b2",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "low to moderate",
+      "es": "bajo a moderado"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b3",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "weekly",
+      "es": "semanal"
+    },
+    "substratum": {
+      "en": "moist, well-drained soil",
+      "es": "suelo húmedo, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b4",
+    "light": {
+      "en": "partial shade to full sun",
+      "es": "sombra parcial a pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "monthly",
+      "es": "mensual"
+    },
+    "substratum": {
+      "en": "moist, well-drained soil",
+      "es": "suelo húmedo, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b5",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "annual",
+      "es": "anual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b6",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "annual",
+      "es": "anual"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b7",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "substratum": {
+      "en": "rich, well-drained soil",
+      "es": "suelo rico, bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b8",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  },
+  {
+    "id_plant": "662ffa7ac15b8cd59e1891b9",
+    "light": {
+      "en": "full sun",
+      "es": "pleno sol"
+    },
+    "irrigation": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "fertilization": {
+      "en": "regular",
+      "es": "regular"
+    },
+    "substratum": {
+      "en": "well-drained soil",
+      "es": "suelo bien drenado"
+    }
+  }
+]

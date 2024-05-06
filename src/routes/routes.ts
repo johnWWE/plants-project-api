@@ -7,7 +7,8 @@ import plantRouter from './plant.routes';
 import plantCareRouter from './plantCare.routes';
 import plantLabelRouter from './plantLabel.routes';
 import userRouter from './user.routes';
-import salesInfRouter from './salesInf.routes';
+import plantSalesInfRouter from './plantSalesInf.routes';
+
 
 import { errorHandler } from '../middleware/errorHandler';
 import { authorize } from '../middleware/auth';
@@ -20,7 +21,7 @@ router.use('/plantlabel', plantLabelRouter);
 router.use('/plant', plantRouter);
 router.use('/users', authorize(UserRole.BASIC), userRouter);
 router.use('/plantcare', plantCareRouter);
-router.use('/salesInf', salesInfRouter);
+router.use('/plantSalesInf', plantSalesInfRouter);
 
 router.use(errorHandler);
 
