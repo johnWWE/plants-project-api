@@ -3,10 +3,11 @@ import { Types } from 'mongoose';
 
 import Plant from '../models/plant.model';
 import PlantLabel from '../models/plantLabel.model';
+import User from '../models/user.model';
 
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
 
-import { IPlant, IPlantLabel, PlantTypeEn, PlantTypeEs } from '../ts/interfaces';
+import { IPlant, IPlantLabel, IUser, PlantTypeEn, PlantTypeEs } from '../ts/interfaces';
 import { isValidPlantType } from '../helpers/plant';
 
 export const getPlants: RequestHandler = async (req, res, next) => {
@@ -33,13 +34,9 @@ export const getPlants: RequestHandler = async (req, res, next) => {
       query.label = { $all: labelIds.flat() };
     }
 
-    let plants: IPlant[] = await Plant.find(query).populate('label');
+    const plants: IPlant[] = await Plant.find(query).populate('label');
 
     if (!plants.length) throw NotFoundError('plant(s) not found');
-
-    await Plant.updateMany(query, { leadf: [] });
-
-    plants = await Plant.find(query).populate('label');
 
     const dataPlants = plants.map((plant: IPlant) => {
       const labels: { [key: string]: string }[] = plant.label.map((label: IPlantLabel) => label.label);
@@ -50,24 +47,6 @@ export const getPlants: RequestHandler = async (req, res, next) => {
     });
 
     res.status(200).json(dataPlants as IPlant[]);
-  } catch (error) {
-    next(error as Error);
-  }
-};
-
-export const getPlant: RequestHandler = async (req, res, next) => {
-  try {
-    const id: string | undefined = req.params.id;
-
-    if (!id) throw BadRequestError('Plant ID not provided');
-
-    if (!Types.ObjectId.isValid(id)) throw NotFoundError('Plant ID is invalid');
-
-    const plant: IPlant | null = await Plant.findById(id).populate('label').exec();
-
-    if (!plant) throw NotFoundError('Plant not found');
-
-    res.status(200).json(plant);
   } catch (error) {
     next(error as Error);
   }
@@ -181,6 +160,18 @@ export const updatePlant: RequestHandler = async (req, res, next) => {
       } else {
         throw BadRequestError('Invalid plant type');
       }
+    }
+
+    if (dataUpdate.leaf) {
+      if (!Types.ObjectId.isValid(dataUpdate.leaf)) throw BadRequestError('User id is invalid');
+      const user: IUser | null = await User.findById(dataUpdate.leaf);
+      if (!user) throw NotFoundError('User not found');
+
+      const leafs: Types.ObjectId[] = currentPlant.leaf;
+
+      dataUpdate.leaf = leafs.map((leaf) => leaf.toString()).includes(dataUpdate.leaf.toString())
+        ? leafs.filter((leaf) => leaf.toString() !== dataUpdate.leaf.toString())
+        : [...leafs, dataUpdate.leaf];
     }
 
     const plantUpdate: IPlant | null = await Plant.findByIdAndUpdate(id, dataUpdate, { new: true });
