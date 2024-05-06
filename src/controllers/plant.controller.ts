@@ -42,7 +42,6 @@ export const getPlants: RequestHandler = async (req, res, next) => {
     plants = await Plant.find(query).populate('label');
 
     const dataPlants = plants.map((plant: IPlant) => {
-
       const labels: { [key: string]: string }[] = plant.label.map((label: IPlantLabel) => label.label);
       return {
         ...plant._doc,
