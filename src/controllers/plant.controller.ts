@@ -5,6 +5,7 @@ import Plant from '../models/plant.model';
 import PlantLabel from '../models/plantLabel.model';
 
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
+
 import { IPlant, IPlantLabel, PlantTypeEn, PlantTypeEs } from '../ts/interfaces';
 import { isValidPlantType } from '../helpers/plant';
 
@@ -39,6 +40,7 @@ export const getPlants: RequestHandler = async (req, res, next) => {
     plants = await Plant.find(query).populate('label');
 
     const dataPlants = plants.map((plant: IPlant) => {
+
       const labels: { [key: string]: string }[] = plant.label.map((label: IPlantLabel) => label.label);
       return {
         ...plant._doc,

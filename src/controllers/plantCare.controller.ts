@@ -45,6 +45,7 @@ export const getPlantCareById: RequestHandler = async (req, res, next) => {
 export const createPlantCare: RequestHandler = async (req, res, next) => {
   try {
     const data = req.body;
+
     const { id_plant, light, irrigation, fertilization, substratum } = data;
 
     if (!id_plant || !light || !irrigation || !fertilization || !substratum) throw BadRequestError('All fields are required');
