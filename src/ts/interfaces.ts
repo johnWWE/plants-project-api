@@ -1,7 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
 import { Document, Types } from 'mongoose';
 import { Request } from 'express';
 
+export interface Query {
+  $and?: any[];
+}
+
+export interface OrCondition {
+  $or?: { [key: string]: any }[];
+  label?: { $in: string[] } | undefined;
+}
 export interface Payload {
   userId: string;
 }

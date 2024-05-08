@@ -8,17 +8,24 @@ import User from '../models/user.model';
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
 import { isValidPlantType } from '../helpers/plant';
 
-import { IPlant, IPlantLabel, IUser, PlantTypeEn, PlantTypeEs } from '../ts/interfaces';
+import { IPlant, IPlantLabel, IUser, OrCondition, PlantTypeEn, PlantTypeEs, Query } from '../ts/interfaces';
 
 export const getPlants: RequestHandler = async (req, res, next) => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const query: any = {};
+    const query: Query = {};
     const { name, type, label } = req.query;
 
-    if (name) query.$or = [{ 'name.en': { $regex: name.toString(), $options: 'i' } }, { 'name.es': { $regex: name.toString(), $options: 'i' } }];
+    const orConditions: OrCondition[] = [];
 
-    if (type) query.$or = [{ 'type.en': { $regex: type.toString(), $options: 'i' } }, { 'type.es': { $regex: type.toString(), $options: 'i' } }];
+    name &&
+      orConditions.push({
+        $or: [{ 'name.en': { $regex: name.toString(), $options: 'i' } }, { 'name.es': { $regex: name.toString(), $options: 'i' } }],
+      });
+
+    type &&
+      orConditions.push({
+        $or: [{ 'type.en': { $regex: type.toString(), $options: 'i' } }, { 'type.es': { $regex: type.toString(), $options: 'i' } }],
+      });
 
     if (label) {
       const labels = label.toString().split(',');
@@ -31,8 +38,10 @@ export const getPlants: RequestHandler = async (req, res, next) => {
         }),
       );
 
-      query.label = { $in: labelIds.flat() };
+      orConditions.push({ label: { $in: labelIds.flat() } });
     }
+
+    if (orConditions.length > 0) query.$and = orConditions;
 
     const plants: IPlant[] = await Plant.find(query).populate('label');
 
