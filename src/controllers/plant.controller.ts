@@ -6,9 +6,9 @@ import PlantLabel from '../models/plantLabel.model';
 import User from '../models/user.model';
 
 import { BadRequestError, NotFoundError } from '../utils/customErrors';
+import { isValidPlantType } from '../helpers/plant';
 
 import { IPlant, IPlantLabel, IUser, PlantTypeEn, PlantTypeEs } from '../ts/interfaces';
-import { isValidPlantType } from '../helpers/plant';
 
 export const getPlants: RequestHandler = async (req, res, next) => {
   try {
@@ -31,7 +31,7 @@ export const getPlants: RequestHandler = async (req, res, next) => {
         }),
       );
 
-      query.label = { $all: labelIds.flat() };
+      query.label = { $in: labelIds.flat() };
     }
 
     const plants: IPlant[] = await Plant.find(query).populate('label');
